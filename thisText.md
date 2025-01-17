@@ -11,3 +11,5 @@ I’m interested in employment with Sandhills Global because of its innovative a
 
 
 Sandhills Global connects buyers and sellers in industries like construction, agriculture, trucking, and aviation through print publications, online platforms, and cloud services. It provides tools for inventory management, advertising, logistics, e-commerce, and market data analysis. The company fosters innovation and community service while supporting businesses of all sizes worldwide.
+
+
