@@ -1,0 +1,382 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy28.netlify.app/}{portfolio}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.3 cm}
+
+
+\begin{onecolentry}
+	Hello there! I'm a passionate \textbf{Fullstack Developer} with \textasciitilde5 years of experience building end-to-end applications using a modern tech stack. On the \textbf{frontend}, I specialize in \textbf{React.js}, \textbf{Next.js}, and \textbf{TypeScript}, delivering sleek, responsive, and performant UIs. On the \textbf{backend}, I develop secure and scalable systems using both \textbf{Node.js (Express)} and \textbf{Python (FastAPI, Flask, Django)}, backed by relational and NoSQL databases.
+	
+	My recent work emphasizes building fullstack applications where clean, intuitive frontend interfaces meet robust backend logic. I specialize in crafting dynamic and responsive UIs using \textbf{React.js}, \textbf{Next.js}, and \textbf{TypeScript}, often integrating real-time updates, authentication, and API consumption. On the backend, I structure scalable services using \textbf{Node.js (Express)} and \textbf{Python (FastAPI)}, managing data through \textbf{Firestore}, \textbf{PostgreSQL}, or \textbf{MongoDB}. Increasingly, I integrate \textbf{AI agents and LLM workflows} into these systems—delivering features like personalized automation, smart dashboards, and ML-backed recommendations—all deployed via \textbf{Docker}, \textbf{Kubernetes}, and platforms like \textbf{AWS} and \textbf{Azure}.
+
+\end{onecolentry}
+% I thrive on crafting impactful projects, whether it's automating social content with \textbf{FFMPEG} and \textbf{WhisperAI}, or building secure blockchain dashboards. I regularly contribute to \textbf{open-source} and explore new technologies in my personal time to push boundaries and create efficient, future-proof systems.
+	
+	
+
+
+\section{Technologies}
+\begin{onecolentry}
+	\textbf{Languages:} Python, JavaScript, Java, TypeScript, C++, C\#, Rust, Bash, PowerShell, R, Go, Ruby, Swift
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Frameworks \& Libraries:} React.js, Next.js, Redux, TailwindCSS, Chakra UI, D3.js, Chart.js, HTML5, CSS3, SCSS, Jinja
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Web Technologies:} Flask, NodeJS, Django, FastAPI, Express, ASP.NET, Angular, YAML
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Databases:} SQL, PostgreSQL, Azure SQL, Redis, AWS RDS, MongoDB, DynamoDB, Firebase, Firestore
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Cloud \& DevOps:} Azure, AWS, CI/CD, Kubernetes, Docker, Jenkins, Terraform, Ansible, PowerShell, Yarn, NPM, RBAC
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Operating Systems:} Windows, Linux (CentOS, Ubuntu), macOS, Embedded Systems, RaspberryPi, Arduino
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{APIs and Protocols:} REST APIs, OpenAPI, Swagger, WebRTC, SOAP, GraphQL, MQTT, WebSocket, OAuth, JSON-RPC
+\end{onecolentry}
+\begin{onecolentry}
+	\textbf{Other Tools:} Kafka, Jira, GitHub, Nginx, Azure AKS, Metamask, Cron, WebSockets, OpenAI, Ollama, FFMPEG, Selenium
+\end{onecolentry}
+
+
+
+
+
+\section{Experience}
+
+\begin{twocolentry}{
+	Jan 2024 – Present
+}
+\textbf{Fullstack Developer}, Midh Technologies, TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Spearheaded the design and development of the official company website by translating \textbf{Figma designs} into a responsive, production-grade application using \textbf{Next.js}, \textbf{TailwindCSS}, and \textbf{React.js}, improving deployment velocity by \textbf{40\%}.
+	\item Engineered interactive frontend components with seamless \textbf{animations}, modular architecture, and efficient \textbf{state management} using \textbf{React Query}, \textbf{Axios}, and \textbf{custom hooks}; integrated APIs built in \textbf{Node.js/Express} using \textbf{Web Hooks}.
+	\item Integrated third-party tools such as \textbf{Sumsub} (KYC/AML), \textbf{Hubspot} (CRM, ticketing, email automation), and \textbf{Stripe} (payment gateway) via SDKs and REST APIs, enhancing user onboarding and transactional efficiency.
+	\item Architected a dual-database model using \textbf{Firebase Admin SDK} and \textbf{MongoDB Node SDK} for seamless connectivity between \textbf{Firestore} (real-time auth/state) and \textbf{MongoDB} (primary persistence), improving data sync reliability and scalability.
+	\item Designed and implemented an \textbf{Admin Portal} as a separate frontend service using \textbf{React.js} and \textbf{D3.js}, integrating \textbf{Firebase Auth}, \textbf{RBAC}, and \textbf{Firebase Cloud Messaging} for secure, real-time dashboard analytics.
+	\item Developed and deployed secure on-chain identity and asset management using \textbf{Fireblocks SDK} and \textbf{Metamask}, enabling wallet creation and blockchain interaction within the user profile system.
+	\item Used \textbf{Docker} for \textbf{Node.js} containerization and orchestrated deployments via \textbf{Kubernetes} on \textbf{AWS EKS}; hosted frontend on \textbf{AWS Amplify} with CI/CD pipelines powered by \textbf{BitBucket}, ensuring scalable, automated delivery.
+	\item Collaborated with testers and QA teams using \textbf{Jira}, managing issue tracking and resolution during release cycles, achieving a \textbf{94\% bug resolution rate} within SLA.
+	\item Integrated \textbf{HotJar} for user behavior analytics, implementing \textbf{heatmaps}, \textbf{session recordings}, and \textbf{user feedback polls} to optimize UX/UI design; managed \textbf{Google SEO} optimization including meta tags, structured data, and page speed improvements, resulting in \textbf{45\% increase in organic traffic} and \textbf{28\% improvement in user engagement metrics}.
+	\item Authored clean, modular frontend/backend code and comprehensive internal documentation on UI logic, API schema, and data workflows—improving onboarding speed and reducing knowledge transfer time by \textbf{35\%}.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+		June 2021 - July-2022
+	}
+	\textbf{Python/Web Developer}, Compendious Medialabs Pvt. Ltd., IN
+\end{twocolentry}
+
+\begin{onecolentry}
+	\begin{highlights}
+		\item Developed a responsive \textbf{React frontend} that consumed live data from the FastAPI backend, creating interactive \textbf{charts}, \textbf{graphs}, and \textbf{metrics dashboards} using \textbf{D3.js} and \textbf{Chart.js}, improving data visualization efficiency by \textbf{45\%}.
+		\item Designed and developed an in-house \textbf{data scraping application} using \textbf{Python}, \textbf{Selenium}, \textbf{RestAPI}, and \textbf{Beautiful Soup}, automating \textbf{data extraction} from diverse web sources with dynamic content structures, reducing collection time by \textbf{60\%}.
+		\item Designed responsive \textbf{UI/UX components} using \textbf{Styled Components} and \textbf{Material-UI (MUI)}, creating mobile-first layouts with \textbf{Flexbox} and \textbf{CSS Grid} that adapted across \textbf{5+ device breakpoints} and improved user engagement by \textbf{28\%}.
+		\item Implemented real-time data synchronization between the React frontend and FastAPI backend, displaying live metrics with \textbf{WebSocket connections}, handling \textbf{10,000+ data points} with smooth rendering performance.
+		\item Integrated robust error-handling mechanisms to identify and recover from failures during scraping sessions, improving scraping reliability and ensuring a \textbf{93\% success rate}.
+		\item Developed a \textbf{FastAPI backend} to serve the collected and scraped cleaned data through \textbf{JSON REST endpoints}, implementing \textbf{Pydantic models} for data validation and achieving \textbf{250ms average response time} for data queries.
+		\item Implemented advanced \textbf{state management} in React using \textbf{Redux} and \textbf{Context API}, optimizing data flow and reducing component re-renders by \textbf{35\%}, while ensuring seamless user experience across \textbf{12+ dashboard components}.
+		\item Collaborated with cross-functional teams using \textbf{Jira} for bug tracking and agile sprint planning, enhancing team productivity and ensuring timely resolution of issues.
+	\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+		Feb 2020 - March 2021
+	}
+	\textbf{Software Engineer}, Softline Solutions PVT. LTD
+\end{twocolentry}
+\begin{onecolentry}
+	\begin{highlights}
+		\item Collaborated with ML developers to build a comprehensive \textbf{Sign Language translation and augmentation system}, contributing to \textbf{data collection}, \textbf{labeling}, and \textbf{dataset preparation} for the machine learning pipeline.
+		\item Developed a \textbf{Flask web application} using \textbf{Python}, \textbf{HTML5}, \textbf{CSS3}, and \textbf{JavaScript} to showcase the ML team's sign language models, providing an interactive interface for ML developers to test and demonstrate model performance.
+		\item Implemented dynamic frontend templates using \textbf{Jinja2} and \textbf{Bootstrap} for responsive design, creating real-time model prediction displays and result visualizations that improved model testing workflow by \textbf{40\%}.
+		\item Integrated \textbf{JavaScript libraries} including \textbf{jQuery} and \textbf{Chart.js} to build interactive dashboards displaying model accuracy metrics, confidence scores, and prediction results, enhancing the ML team's ability to analyze model performance.
+		\item Designed and deployed a \textbf{TensorFlow Lite model} integration within the web interface for \textbf{efficient, real-time inference}, optimized for edge devices and browser-based testing.
+		\item Integrated the deployed model with \textbf{Unity}, enabling seamless \textbf{(ASL) American Sign Language translation} within \textbf{Augmented Reality (AR)} environments for real-time user interaction and frontend demonstration.
+		\item Built frontend components for \textbf{image upload}, \textbf{webcam integration}, and \textbf{real-time prediction display} using vanilla \textbf{JavaScript} and \textbf{HTML5 Canvas}, allowing ML developers to easily test models with live data input.
+	\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+		Sept 2018 - July 2019
+	}
+	\textbf{Web Developer}, underDogs Gaming Studios, IN
+\end{twocolentry}
+
+\begin{onecolentry}
+	\begin{highlights}
+		\item Developed custom \textbf{ecommerce websites} for clients using \textbf{HTML5}, \textbf{CSS3}, \textbf{JavaScript}, and \textbf{Bootstrap}, creating responsive and user-friendly online stores that improved client sales conversion rates by \textbf{25\%}.
+		\item Built interactive \textbf{landing pages} and \textbf{product showcase websites} using \textbf{jQuery}, \textbf{AOS (Animate On Scroll)}, and \textbf{Swiper.js} libraries, enhancing user engagement and creating visually appealing client presentations.
+		\item Created comprehensive \textbf{admin dashboards} for both company and customer management using \textbf{Bootstrap} and \textbf{Chart.js}, enabling real-time monitoring of sales metrics, inventory, and customer analytics.
+		\item Integrated multiple \textbf{third-party APIs} including \textbf{payment gateways} (Stripe, PayPal), \textbf{shipping APIs}, and \textbf{inventory management systems} with backend services, streamlining ecommerce operations and reducing manual processing by \textbf{40\%}.
+		\item Implemented \textbf{database integration} for ecommerce functionality using \textbf{MySQL} and \textbf{PHP}, handling product catalogs, user accounts, order management, and transaction records with optimized query performance.
+		\item Developed responsive \textbf{customer portals} using \textbf{JavaScript} and \textbf{AJAX} for real-time order tracking, account management, and customer support, improving customer satisfaction and reducing support tickets by \textbf{30\%}.
+	\end{highlights}
+\end{onecolentry}
+
+
+
+\vspace{0.2 cm}
+
+
+\section{Projects}
+\vspace{0.05 cm}
+
+\begin{onecolentry}
+	\textbf{LinkedIn Reverse Search Platform} \hfill Client Project
+	\begin{highlights}
+		\item Built a comprehensive \textbf{data enrichment platform} using \textbf{Python}, \textbf{Selenium}, \textbf{Beautiful Soup}, and fine-tuned \textbf{Hugging Face models} to automatically extract LinkedIn profiles and verified contact emails, processing \textbf{1000+ records per batch}.
+		\item Developed an intuitive \textbf{Next.js frontend} with \textbf{drag-and-drop Excel upload}, real-time processing indicators, and interactive data tables using \textbf{React Table} and \textbf{Material-UI} for seamless file management and progress tracking.
+		\item Designed a comprehensive \textbf{admin dashboard} using \textbf{React.js}, \textbf{Chart.js}, and \textbf{D3.js} featuring analytics on processing success rates, API usage metrics, and user activity with responsive design for desktop and mobile.
+		\item Architected a \textbf{multi-threaded data processing pipeline} integrating LinkedIn scraping, SalesQL APIs, and custom ML models, implementing \textbf{Redis caching} and \textbf{MongoDB} storage to reduce processing time by \textbf{45\%} for recurring requests.
+		\item Implemented secure \textbf{user authentication} and \textbf{subscription management} using \textbf{Firebase Auth} and \textbf{Firestore}, with automated \textbf{SMTP email delivery} system for processed Excel files and user account management.
+		\item Deployed the platform using \textbf{Docker containers} with \textbf{automated CI/CD pipelines}, implementing rate limiting and monitoring to maintain \textbf{99.5\% uptime} while processing thousands of enrichment requests daily.
+	\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+	\textbf{AI-Powered Video Generation Pipeline} \hfill Personal Project \ \ \ \ \textbf{Instagram:} \href{https://www.instagram.com/thatvocabguy/}{\texttt{instagram/that\_vocab\_girl/}}
+	\begin{highlights}
+		\item Developed an advanced \textbf{AI-powered video generation pipeline} using \textbf{Python} and \textbf{machine learning models}, integrating \textbf{F5-TTS (Flow Matching)} for high-quality voice cloning and speech synthesis, creating complete AI-generated content.
+		\item Integrated \textbf{OpenAI API} for intelligent script generation and \textbf{F5-TTS} for creating cloned audio with fluent speech reproduction, using WhisperAI for transcription and FFMPEG for adding subtitles to the video.
+		\item Built sophisticated video processing system using \textbf{FFMPEG} to merge audio with dynamic trending gaming backgrounds, extracting random segments from large video files and overlaying custom images and text for randomized generation.
+		\item Designed end-to-end automated pipeline that processes scripts, generates voice audio, combines with dynamic backgrounds, and creates complete videos with customized text overlays and synchronized audio-visual elements.
+		\item Developed multi-channel automation system supporting \textbf{YouTube} and \textbf{Instagram} uploads, maintaining platform-specific metadata, tags, and formatting while ensuring consistent branding and content optimization across channels.
+		\item Created intuitive \textbf{Gradio interface} for pipeline management, allowing real-time monitoring of video generation progress, voice cloning status, and batch processing of multiple videos with customizable parameters.
+		\item Orchestrated scalable deployment using \textbf{Docker containers} and \textbf{CRON jobs}, enabling automated content creation and distribution pipeline that generates and publishes \textbf{50+ videos daily} across multiple social media platforms.
+	\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\section{Education}
+\begin{twocolentry}{
+		Aug 2022 – Dec 2023
+	}
+	\textbf{State University of New York at Binghamton}\end{twocolentry}
+
+\begin{twocolentry}{
+		3.44/4.00 GPA
+	}
+	Master of Science in Computer Science
+\end{twocolentry}
+
+
+\end{document}
