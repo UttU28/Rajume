@@ -1,0 +1,29 @@
+Software / DevOps Engineer
+• Owned production-grade AWS EKS infrastructure, architecting high availability Kubernetes clusters.  
+• Established infrastructure reliability through Terraform and Ansible governance across multiple environments.  
+• Led observability strategy with Prometheus, Grafana, and CloudWatch, maintaining 94% SLA compliance.
+
+
+DevOps Engineer CO-OP
+• Managed production infrastructure for machine learning workloads on AWS EKS, optimizing costs through effective node pool configuration and auto-scaling policies.  
+• Designed and deployed high-performance inference infrastructure using FastAPI and AWS API Gateway, enhancing scalability and security.  
+• Developed Ansible playbooks for infrastructure automation, cutting server configuration time by 50% and ensuring consistency.
+
+
+DevOps & Software Developer
+• Managed hybrid infrastructure for on-premise Linux servers using Docker, enhancing reliability and automation.  
+• Designed and implemented self-hosted CI/CD infrastructure with GitHub Actions, streamlining deployment processes.  
+• Established a reverse proxy infrastructure with Nginx, achieving high availability and optimized response times.
+
+
+
+Software / DevOps Engineer
+• Managed production infrastructure on Azure, ensuring high availability and auto-scaling for Flask web applications.  
+• Built infrastructure automation through Azure DevOps pipelines, enhancing ML model deployment efficiency.  
+• Designed and implemented containerized infrastructure using Azure Container Instances and Docker for consistent deployments.
+
+
+Web/Game Developer
+• Contributed to backend API infrastructure for gaming services, enhancing Quarters API integration across multiple games.  
+• Optimized real-time client-server communication using Python and C#, improving system reliability and error handling.  
+• Developed a unified transaction infrastructure connecting external services to internal game systems, adhering to API best practices.

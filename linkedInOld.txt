@@ -1,0 +1,28 @@
+Software Engineer
+- Assisted in fine-tuning the Llama 3.2 model on Azure Kubernetes Service (AKS) for scalable, low-latency inference. Developed secure RESTful API endpoints with FastAPI, integrating Azure API Management for authentication, rate-limiting, and enhanced scalability.
+- Developed an interactive analytics dashboard using React.js and D3.js, featuring advanced visual analytics and implementing Role-Based Access Control (RBAC) through Azure Active Directory. Utilized Azure DevOps for seamless deployment and continuous updates.
+- Developed the company’s official website using Next.js, incorporating a dynamic CMS with RBAC for admin functionalities and content management. Configured SMTP via Azure Communication Services and hosted the site on Azure App Service.
+- Implemented a user profile dashboard by integrating the Fireblocks SDK and MetaMask, enabling on-chain identity creation for seamless interaction with blockchain assets. Deployed secure, scalable APIs using Azure Functions.
+
+
+
+Python Web Developer
+- Developed an in-house data scraping application using Python, Selenium, REST API, and Beautiful Soup, building a data pipeline and leveraging Azure Cloud for data storage, analysis, and marketing automation.
+- Used NLTK and spaCy for NLP tasks, including text preprocessing and data classification, improving accuracy and efficiency.
+- Developed a data dashboard using the Django framework in Python, integrating dynamic data updates from CosmosDB. Utilized D3.js and Chart.js to create interactive and live charts and graphs based on filters.
+- Tested and implemented data filtering techniques in Python, utilizing NumPy and Pandas for cleaning and preprocessing data.
+
+
+
+Machine Learning / Augmented Reality
+- Developed a Sign Language translation and augmentation system using machine learning, with data collection, labeling, and manual cleaning to generate a high-quality dataset.
+- Evaluated and optimized various ML algorithms (Logistic Regression, Naïve Bayes, Decision Tree) to achieve 92% accuracy, selecting the best-performing model.
+- Designed and deployed a TensorFlow Lite model for efficient, real-time inference, integrated with Unity for Augmented Reality (AR) applications, enabling seamless Sign Language translation in AR environments.
+
+
+
+
+Game Developer / Python Backend
+- Integrated and optimized the Quarters API across multiple games, enabling seamless universal gaming currency transactions as part of a POC. Developed player wallets, facilitated secure transactions, and enabled points-to-quarters conversion.
+- Tested API integration, improving real-time data synchronization and communication between clients and servers using Python and C#.
+- Assisted in implementing secure transaction methods integrated with Unity3D, with expertise in API best practices and bug fixing.

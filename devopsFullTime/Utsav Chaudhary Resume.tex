@@ -1,0 +1,396 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy28.netlify.app/}{thatinsaneguy.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.3 cm}
+
+
+\begin{onecolentry}
+	Senior \textbf{DevOps Engineer} with \textbf{6 years} architecting and deploying \textbf{production grade AWS and Azure infrastructure} for high availability systems.
+	Demonstrated success in reducing cloud expenditure and deep proficiency in \textbf{Kubernetes + Helm orchestration} , \textbf{Infrastructure as Code} with \textbf{Terraform} and \textbf{Ansible}, and \textbf{cross cloud deployments} across Dev, Test, UAT, QA, and Production.
+    Extensive experience architecting and testing comprehensive \textbf{disaster recovery} strategies that meet stringent \textbf{RTO} and \textbf{RPO} requirements for business critical systems.
+\end{onecolentry}
+
+
+\section{Technologies}
+
+\textbf{Cloud \& Infrastructure:}
+AWS (EC2, EKS, ECS, Fargate, Lambda, RDS, S3, EBS, VPC, IAM, CloudWatch, API Gateway, Secrets Manager, Route 53, ALB/ELB, CodeDeploy, KMS, CloudHSM),
+Azure (App Services, AKS, Azure DevOps, Azure SQL), Docker, Kubernetes, Helm, Rancher, Argo CD
+
+\vspace{0.25em}
+
+\textbf{IaC \& Automation:}
+Terraform, Ansible, Puppet, Chef, Bash, Python, PowerShell, YAML, CloudFormation, Nginx, Cron
+
+\vspace{0.25em}
+
+\textbf{CI/CD \& Version Control:}
+Jenkins, GitHub Actions, Bitbucket Pipelines, AWS CodePipeline, Azure DevOps, Git, GitHub, GitLab, Bitbucket, AWS CodeArtifact
+
+\vspace{0.25em}
+
+\textbf{Monitoring \& Logging:}
+Prometheus, Grafana, Elasticsearch, Logstash, Kibana, CloudWatch, Application Insights, Datadog, Elastic Stack
+
+\vspace{0.25em}
+
+\textbf{Networking \& Security:}
+VPCs, Security Groups, IAM Policies, DNS, VPN, LDAP, RBAC, SSL/TLS, OAuth 2.0
+
+\vspace{0.25em}
+
+\textbf{Development \& Tools:}
+Python, TypeScript, JavaScript, Groovy, FastAPI, Node.js, React.js, Next.js, REST APIs, gRPC, WebSockets, PostgreSQL, MongoDB, Redis, Firebase, Kafka, Jira, Confluence
+
+\vspace{0.25em}
+
+\textbf{Operating Systems:}
+Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
+
+
+
+\section{Experience}
+
+\begin{twocolentry}{
+	Feb 2025 - Present
+}
+\textbf{Sr. DevOps Engineer}, Hybrid, Labs196, TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Architected and implemented \textbf{multicloud strategy} serving \textbf{45+ microservices} across \textbf{AWS} and \textbf{Azure} infrastructure, reducing single cloud dependency and ensuring \textbf{high availability} \textbf{Kubernetes clusters} with \textbf{Helm} deployment strategies, ensuring consistent environment parity across \textbf{Dev}, \textbf{Test}, \textbf{UAT}, \textbf{QA}, and \textbf{Production}.
+	\item Operated \textbf{200+ node} \textbf{Kubernetes} clusters and automated application delivery with \textbf{Argo CD} \textbf{GitOps}, eliminating manual deployment errors and enabling synchronized releases across all valid \textbf{GxP} environments.
+	\item Implemented \textbf{Rancher} as the centralized \textbf{Kubernetes} management platform to govern \textbf{EKS} and \textbf{AKS} clusters, and integrated Rancher with \textbf{Azure Active Directory (Entra ID)} for \textbf{RBAC} enforcing \textbf{least privilege} permissions and maintaining \textbf{audit-ready logs} for \textbf{FDA} and internal compliance reviews.
+	\item Established infrastructure reliability through \textbf{Terraform} and \textbf{Ansible} governance, managing \textbf{VPCs}, \textbf{security groups}, \textbf{IAM policies}, and \textbf{RDS} lifecycle across multiple environment infrastructure with version controlled \textbf{IaC}.
+	\item Led \textbf{observability strategy} implementing \textbf{Prometheus} and \textbf{Grafana} for infrastructure metrics, \textbf{CloudWatch Logs} and \textbf{ELK Stack} for centralized logging, and alerting, enabling rapid incident response and maintaining \textbf{99.9\% SLA} compliance.
+	\item Automated backup procedures for cloud resources including \textbf{S3} buckets, \textbf{Azure Blob Storage} and \textbf{databases} across both platforms, ensuring data durability and compliance with \textbf{GxP} retention requirements.
+    \item Designed and integrated \textbf{edge compute} and \textbf{CDN} server infrastructure for edge deployments, reducing latency and improving content delivery aligned with project architecture.
+	\item Participated in \textbf{on-call} rotations and \textbf{incident response}, creating \textbf{runbooks} and collaborating across teams to resolve infrastructure issues while maintaining \textbf{production} reliability.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	Jan 2024 - Feb 2025
+}
+\textbf{Sr. DevOps Engineer}, OnSite, Finix196, TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Architected and deployed production \textbf{AWS EKS} clusters for \textbf{containerized workloads} behind \textbf{Application Load Balancers (ALB)}, sustaining \textbf{99.9\% availability} for \textbf{trading} and \textbf{risk management} services.
+	\item Implemented centralized \textbf{monitoring} and \textbf{alerting} with \textbf{Prometheus} and \textbf{Grafana}, integrated with \textbf{Amazon Route 53} health checks and \textbf{load balancer} metrics, reducing \textbf{mean time to detect (MTTD)} for production incidents from \textbf{30 minutes} to \textbf{5 minutes} across \textbf{real-time payment} and \textbf{settlement} systems.
+	\item Led migration of legacy applications from \textbf{AWS EC2} to \textbf{ECS Fargate}, eliminating server management overhead and improving \textbf{resource utilization} by \textbf{40\%} for the \textbf{customer onboarding} and \textbf{KYC} platform.
+	\item Deployed \textbf{canary release} strategy using \textbf{AWS CodeDeploy} with \textbf{Application Load Balancer (ALB)} traffic shifting, reducing deployment related incidents by \textbf{75\%} for the \textbf{online banking portal}.
+	\item Automated \textbf{backup} and \textbf{disaster recovery (DR)} for \textbf{Amazon RDS} databases and \textbf{EBS} volumes, meeting \textbf{RPO} of \textbf{10 minutes} and \textbf{RTO} of \textbf{30 minutes} for critical \textbf{transaction processing} systems.
+	\item Architected secure \textbf{data encryption} and \textbf{key rotation} using \textbf{AWS KMS} and \textbf{AWS CloudHSM}, protecting sensitive \textbf{financial data} \textbf{at rest} and \textbf{in transit} while achieving compliance with internal \textbf{cryptographic standards}.
+\end{highlights}
+\end{onecolentry}
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	June 2023 - Dec 2023
+}
+\textbf{DevOps Engineer CO-OP}, Midh Technologies, TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Managed production infrastructure for ML workloads, supporting \textbf{GPU backed Kubernetes clusters} on \textbf{AWS EKS} with cost optimization strategies including node pool configuration, resource quotas, and auto scaling policies.
+	\item Designed high-performance inference infrastructure deploying \textbf{FastAPI} endpoints behind \textbf{AWS API Gateway} with \textbf{IAM authentication}, request throttling, and \textbf{Lambda} integrations for scalable ML inference.
+	\item Developed infrastructure automation through \textbf{Ansible playbook} development, reducing manual server configuration and deployment time by \textbf{50\%} while ensuring configuration consistency.
+	\item Built production \textbf{CI/CD pipelines} with \textbf{GitHub Actions}, automating testing, Docker image builds, security scanning, and deployments to \textbf{AWS Amplify} and \textbf{EKS} environments.
+	\item Implemented infrastructure security practices including \textbf{RBAC} policies, \textbf{IAM role} management, and \textbf{VPC} security configurations across AWS services and application layers.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	June 2021 - July 2022
+}
+\textbf{DevOps/Platform Engineer}, Compendious Medialabs Pvt. Ltd., IN
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Managed hybrid infrastructure for \textbf{on premise Linux servers} (Ubuntu) with containerized deployments using \textbf{Docker}, establishing infrastructure reliability and automation through \textbf{Bash} scripting and configuration management.
+	\item Designed and implemented self hosted CI/CD infrastructure deploying \textbf{GitHub Actions runners} on local infrastructure, building production grade pipelines for automated testing, Docker builds, and multiple environment deployments.
+	\item Established production grade reverse proxy infrastructure with \textbf{Nginx} and \textbf{SSL/TLS} termination, optimizing external service exposure with \textbf{250ms} average response time and high availability.
+	\item Implemented observability strategy deploying \textbf{Prometheus} and \textbf{Grafana} monitoring on local infrastructure; automated infrastructure tasks with \textbf{Python/Bash} scripting, reducing manual operational overhead by \textbf{60\%}.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	March 2020 - Sept 2020
+}
+\textbf{Software Engineer / DevOps} Remote, VRoKCs, MO
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+	\item Managed production infrastructure on \textbf{Azure}, deploying \textbf{Flask web applications} on \textbf{Azure App Services} with high availability configurations, auto scaling, and integrated monitoring.
+	\item Built infrastructure automation through \textbf{Azure DevOps} pipelines for ML model deployment, implementing artifact storage with \textbf{Azure Blob Storage} and version control workflows.
+	\item Designed containerized infrastructure using \textbf{Azure Container Instances} and \textbf{Docker} for ML inference services, ensuring environment parity between development and production with consistent deployment practices.
+	\item Developed CI/CD infrastructure using \textbf{Azure DevOps} for ML lifecycle management, automating training and deployment workflows and reducing deployment cycles by \textbf{40\%} through pipeline optimization.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	March 2019 - Aug 2019
+}
+\textbf{Web/Game Developer}, underDogs Gaming Studios, IN
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Contributed to backend API infrastructure for gaming services, integrating and optimizing \textbf{Quarters API} across multiple games with secure transaction, supporting \textbf{load balancing} and \textbf{API rate limiting} for high availability systems.
+	\item Supported infrastructure reliability initiatives by optimizing real time client server communication, validating and refining backend interaction flows using \textbf{Python} and \textbf{C\#}, implementing error handling and health monitoring.
+	\item Developed unified transaction infrastructure connecting external services (\textbf{payments}, \textbf{inventory}, \textbf{shipping}) to internal game systems, following consistent API patterns and infrastructure best practices.
+	\item Participated in infrastructure security and testing practices, implementing \textbf{API security best practices}, comprehensive logging, and integration testing frameworks for edge cases including payment failures and network resilience.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.2 cm}
+
+\section{Education}
+\begin{twocolentry}{
+		Aug 2022 - Dec 2023
+	}
+	\textbf{State University of New York at Binghamton}\end{twocolentry}
+
+\begin{twocolentry}{
+		3.44/4.00 GPA
+	}
+	Master of Science in Computer Science
+\end{twocolentry}
+
+
+\vspace{0.2 cm}
+
+\section{Certifications}
+\begin{onecolentry}
+	\includegraphics[height=2cm]{../az400.png}
+	\includegraphics[height=2cm]{../az900.png}
+	\includegraphics[height=2cm]{../expert.png}
+	\includegraphics[height=2cm]{../googleit.png}
+	
+	\textbf{Microsoft Certified: DevOps Engineer Expert} \hfill \href{https://drive.google.com/file/d/1AjPcmWMrnxSNEUaSC6XzCVqHik7d5M1M/view?usp=drive_link}{View Credential}
+	
+	AZ-400: Designing and Implementing Microsoft DevOps Solutions
+	
+	AZ-900: Microsoft Certified: Azure Fundamentals
+	
+	\textbf{Google IT Automation with Python} - (Specialization) \hfill \href{https://www.coursera.org/account/accomplishments/specialization/certificate/59YMRC67LBUQ}{View Credential}
+\end{onecolentry}
+
+
+\end{document}

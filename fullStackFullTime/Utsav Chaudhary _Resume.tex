@@ -1,0 +1,505 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy.com/}{thatinsaneguy.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.3 cm}
+
+
+\section{Professional Summary}
+
+\begin{onecolentry}
+	\textbf{ Senior Fullstack Developer} with \textasciitilde6 years of experience building scalable end to end web applications, \textbf{robust ETL pipelines} and  \textbf{AI driven automation systems}. Skilled in modern frontend frameworks including \textbf{React.js, Next.js, TypeScript, and TailwindCSS,} paired with robust backend development using \textbf{Node.js (Express)}, \textbf{Python}, \textbf{FastAPI} and large scale data processing with \textbf{Spark (Databricks)} . Extensive experience designing, developing and deploying ML, DL and \textbf{GenAI} solutions. Specialize in training, integrating and productionizing RAG, Agentic Harness, Speech Synthesis. Cloud agnostic, Adept at designing secure, high performance, cloud native systems with real time data processing, analytics dashboards, and multi channel automation across web and content platforms.
+	\end{onecolentry}
+
+		
+
+
+% \section{Technologies}
+% \begin{onecolentry}
+% 	\textbf{Languages:} Python, JavaScript, Java, TypeScript, C++, C\#, Bash
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Frameworks \& Libraries:} React.js, Next.js, Jinja, Redux, Tailwind, D3.js, Chart.js, HTML5, CSS3
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Web Technologies:} Flask, NodeJS, Django, FastAPI, Express, ASP.NET, Angular, YAML
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Databases:} SQL, PostgreSQL, Azure SQL, Redis, AWS RDS, MongoDB, DynamoDB, Firebase	
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Cloud \& DevOps:} Azure, AWS, CI/CD, Kubernetes, Docker, Jenkins, Terraform, Ansible, PowerShell, Yarn, NPM, RBAC
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Operating Systems:} Windows, Linux (CentOS, Ubuntu), macOS, Embedded Systems, RaspberryPi, Arduino
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{APIs and Protocols:} REST APIs, OpenAPI, Swagger, WebRTC, GraphQL, MQTT, WebSocket, OAuth
+% \end{onecolentry}
+% \begin{onecolentry}
+% 	\textbf{Other Tools:} Kafka, Jira, GitHub, Nginx, Azure AKS, Metamask, Cron, WebSockets, OpenAI, Ollama, FFMPEG, Selenium
+% \end{onecolentry}
+
+% \section{Technologies}
+
+% \begin{onecolentry}
+% \textbf{Core Technologies (Daily Use):} 
+% Python, TypeScript, JavaScript, 
+% React.js, Next.js, FastAPI, Node.js (Express), 
+% TailwindCSS, Redux, 
+% PostgreSQL, MongoDB, Firebase, Redis, 
+% AWS (EC2, EKS, Lambda, RDS), 
+% Docker, Kubernetes, 
+% REST APIs, OAuth 2.0, OpenAPI, 
+% CI/CD (GitHub Actions, Bitbucket Pipelines, AWS CodePipeline, Azure DevOps)
+% \end{onecolentry}
+
+% \begin{onecolentry}
+% \textbf{Strong Working Knowledge:} 
+% Django, Flask, ASP.NET, Angular, 
+% D3.js, Chart.js, WebSockets, GraphQL, WebRTC, MQTT, 
+% Terraform, Jenkins, Ansible, Nginx, 
+% Azure (App Services, Azure Kubernetes Service), 
+% Kafka, Selenium, FFMPEG, OpenAI API, Ollama, 
+% Cron, Role-Based Access Control (RBAC), 
+% GitHub, Jira
+% \end{onecolentry}
+
+% \begin{onecolentry}
+% \textbf{Past Experience / Exposure:} 
+% Java, C++, C\#, Bash, PowerShell, 
+% Azure SQL Database, DynamoDB, AWS RDS, 
+% Embedded Systems, Raspberry Pi, Arduino, 
+% Linux (Ubuntu, CentOS), Windows, macOS
+% \end{onecolentry}
+
+
+\section{Technical Skills}
+
+\begin{onecolentry}
+	\textbf{Programming \& Frameworks:} Python, JavaScript, TypeScript, React.js, Next.js, Node.js (Express), FastAPI, Flask, Django, HTML5, CSS3, TailwindCSS, Redux
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{Data Engineering \& Analytics:} Azure Databricks, Apache Spark (PySpark, Spark SQL), Delta Lake, Pandas, ETL/ELT Pipelines, Data Ingestion, Data Curation; Snowflake (SQL warehousing, stages, views, schema design, working knowledge); D3.js, Chart.js
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{Databases:} PostgreSQL, MongoDB, Azure SQL Database, DynamoDB, AWS RDS, Redis, Firebase, Firestore, Vector Store, Opensearch, Pinecone
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{Cloud Platforms:} Microsoft Azure (App Services, ContainerApps, Azure functions, AKS, Azure DevOps), AWS (EC2, EKS, Lambda, RDS, Glue, SQS, Amplify), Google Cloud Platform (Big Query, Vertex AI)
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{DevOps \& CI/CD:} Git, GitHub, Bitbucket, Docker, Kubernetes, Terraform, Jenkins, Ansible, GitHub Actions, Bitbucket Pipelines, AWS CodePipeline, Azure DevOps, Nginx, Cron
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{Security \& APIs:} OAuth 2.0, gRPC, REST APIs, OpenAPI, Swagger, WebSockets, GraphQL, PCI compliant integrations
+\end{onecolentry}
+
+\begin{onecolentry}
+	\textbf{Tools \& Collaboration:} Jira, Selenium, Kafka, FFMPEG, Bash, PowerShell, Linux (Debian, RedHat), Windows, macOS
+\end{onecolentry}
+
+
+
+
+
+\section{Professional Experience}
+
+\begin{twocolentry}{
+	Jan 2024 - Present
+}
+\textbf{Senior Fullstack Developer}\\
+Labs196, TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built secure \textbf{React.js} and \textbf{Next.js} applications with \textbf{TypeScript} and \textbf{TailwindCSS}, including an internal Admin Portal for sales KPI tracking; translated \textbf{Figma} designs into production UI with performance tuned component patterns.
+	\item Developed \textbf{Python} backend micro services and \textbf{Node.js} \textbf{REST APIs} for near real time data processing, mapping unstructured data with semi structured data in MongoDB
+	\item Implemented \textbf{Python ETL} jobs to extract, transform, and load operational data from \textbf{Databricks} into reporting ready datasets consumed by internal dashboards and stakeholder exports.
+	\item Integrated third party services including \textbf{Stripe} (payments), \textbf{HubSpot} (CRM), and \textbf{Sumsub} (KYC/AML) via SDKs and \textbf{REST APIs}, supporting secure, \textbf{PCI compliant} workflows across the full stack.
+	\item Designed a dual database architecture combining \textbf{MongoDB} for primary data storage and \textbf{Firebase} for authentication and real time state, with schemas tuned for reporting and operational queries.
+	\item Developed and maintained \textbf{CI/CD pipelines} using \textbf{Git}, \textbf{Bitbucket}, and \textbf{AWS Amplify}; containerized backend services with \textbf{Docker} on \textbf{AWS EKS} for automated, repeatable deployments.
+	\item Owned production support for live services, triaging defects and shipping fixes while upholding security and code quality standards across the stack.
+	\item Collaborated with QA, product, and sales teams via \textbf{Jira} to prioritize feature work and production defects in a fast paced environment with shifting priorities.
+\end{highlights}
+
+\textbf{Key Achievements:}
+\begin{highlightsforbulletentries}
+	\item Reduced deployment time by \textbf{40\%} through \textbf{Next.js} architecture and automated \textbf{CI/CD} pipelines.
+	\item Sustained \textbf{94\% SLA resolution rate} on production issue triage through close QA collaboration across teams.
+	\item Delivered dual database architecture improving system scalability, data consistency, and reporting readiness across the platform.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	June 2023 - Dec 2023
+}
+\textbf{Python Developer CO-OP}\\
+Shell USA, Inc., TX
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built \textbf{Python/FastAPI} services with \textbf{REST APIs}, authentication, and throttling behind \textbf{Azure API Management} for low latency inference on \textbf{Azure AKS}.
+	\item Developed \textbf{React.js} analytics dashboards with \textbf{D3.js} and granular \textbf{RBAC} for internal teams and client stakeholders, translating analyst requirements into actionable UI workflows.
+	\item Built and ran \textbf{Azure Databricks} \textbf{PySpark} notebooks and \textbf{Spark SQL} jobs to ingest, cleanse, and transform batch datasets; enforced deduplication, partitioning, and schema validation before loading curated tables into \textbf{PostgreSQL} and \textbf{MongoDB}.
+	\item Engineered \textbf{ETL} pipelines on GPU backed \textbf{Azure AKS} with \textbf{Python} and \textbf{Pandas}, orchestrating Spark workloads and fine tuning \textbf{Llama 3.2} inference endpoints with data science teams.
+	\item Prototyped \textbf{Snowflake} warehouse tables and analyst facing \textbf{SQL} views over curated pipeline outputs; optimized \textbf{Azure Database for PostgreSQL} and \textbf{MongoDB} indexing for dashboard and reporting performance.
+	\item Integrated \textbf{Fireblocks SDK} and \textbf{Metamask} into a unified \textbf{React} dashboard with secure on chain interactions via \textbf{Azure Functions}, supporting financial transaction monitoring use cases.
+	\item Deployed company web platform on \textbf{Next.js} and \textbf{Azure App Service} with \textbf{RBAC} and scalable API integrations across the \textbf{Azure} cloud stack.
+	\item Managed \textbf{Git/CI/CD} with \textbf{Azure DevOps} pipelines for automated build, test, and release; collaborated with product owners and developers to deliver timely stakeholder support.
+\end{highlights}
+\textbf{Key Achievements:}
+\begin{highlightsforbulletentries}
+	\item Curated multi source datasets through \textbf{Azure Databricks/Spark}, delivering analytics ready tables that powered \textbf{FastAPI} services and \textbf{React.js} dashboards.
+	\item Deployed \textbf{FastAPI} inference on \textbf{Azure AKS} and \textbf{API Management} with auth and throttling controls, reducing average API latency to under \textbf{250ms}.
+	\item Automated \textbf{Next.js}, \textbf{Azure App Service}, and \textbf{Python} releases through \textbf{Azure DevOps}, accelerating delivery cycles for stakeholders by \textbf{35\%}.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	June 2021 - July 2022
+}
+\textbf{Python/Web Developer}\\
+Compendious Medialabs Pvt. Ltd., IN
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built a responsive \textbf{React} frontend on a \textbf{FastAPI} backend, delivering interactive \textbf{D3.js} and \textbf{Chart.js} metrics dashboards that improved data visualization efficiency by \textbf{45\%}.
+	\item Optimized \textbf{Python/FastAPI} services with \textbf{Pydantic} models and \textbf{REST} endpoints, sustaining \textbf{250ms} average response times for analytics workloads.
+	\item Built \textbf{Python} scraping/\textbf{ETL} with \textbf{Selenium}, \textbf{BeautifulSoup}, and \textbf{Pandas}, cutting manual collection time by \textbf{60\%}.
+	\item Implemented \textbf{WebSocket} driven real time metric streaming for high frequency datasets, keeping operational dashboards continuously up to date.
+	\item Refined \textbf{React} state management and \textbf{SQL} data curation workflows to improve performance and reporting ready for analytics.
+\end{highlights}
+
+\textbf{Key Achievements:}
+\begin{highlightsforbulletentries}
+	\item Shipped full stack \textbf{React}/\textbf{FastAPI} analytics platform with \textbf{45\%} faster visualization and \textbf{250ms} API response times.
+	\item Automated structured and unstructured data ingestion, reducing manual collection effort by \textbf{60\%}.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	March 2020 - Sept 2020
+}
+\textbf{Software Engineer}\\
+VRoKCs, MO (Remote)
+\end{twocolentry}
+\begin{onecolentry}
+\begin{highlights}
+	\item Partnered with ML engineers on a \textbf{Sign Language translation pipeline}, supporting \textbf{data collection}, \textbf{annotation}, and \textbf{dataset preparation} with automated \textbf{Python} preprocessing.
+	\item Built a \textbf{Flask} web app (\textbf{Python}, \textbf{HTML5}, \textbf{CSS3}, \textbf{JavaScript}) with \textbf{TensorFlow Lite} for real time, in browser model evaluation via \textbf{image upload} and \textbf{webcam streaming}.
+	\item Connected the ML pipeline to \textbf{Unity3D}, enabling live ASL translation inside \textbf{Augmented Reality} environments for stakeholder demos.
+	\item Tuned inference latency and data quality checks for responsive in-browser live prediction demos.
+\end{highlights}
+
+\textbf{Key Achievements:}
+\begin{highlightsforbulletentries}
+	\item Delivered a full \textbf{Python/Flask} demo app for real time sign language model evaluation in the browser.
+	\item Integrated the ML pipeline with \textbf{Unity3D} AR, demonstrating live translation to project stakeholders.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+
+
+
+\vspace{0.15 cm}
+\begin{twocolentry}{
+	March 2019 - Aug 2019
+}
+\textbf{Web/Game Developer}\\
+underDogs Gaming Studios, IN
+\end{twocolentry}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Integrated the \textbf{Quarters API} across multiple titles, enabling universal gaming currency transactions, player wallets, and secure points to Quarters conversions.
+	\item Optimized real time client/server flows in \textbf{Python} and \textbf{C\#}, improving transaction reliability across payment failures and network drop edge cases.
+	\item Built \textbf{POC} modules linking \textbf{payments}, \textbf{inventory}, and \textbf{shipping} into a unified transaction layer within \textbf{Unity3D}.
+	\item Applied API best practices with unit and integration testing to harden secure transaction methods for production releases.
+\end{highlights}
+
+\textbf{Key Achievements:}
+\begin{highlightsforbulletentries}
+	\item Unified currency transactions across multiple games via \textbf{Quarters API}, reducing payment friction between titles.
+	\item Shipped \textbf{POC} modules connecting payments, inventory, and shipping into a single transaction workflow.
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+
+
+\vspace{0.2 cm}
+
+
+\section{Projects}
+\vspace{0.05 cm}
+
+\begin{onecolentry}
+	\textbf{LinkedIn Reverse Search Platform} \hfill Client Project \ \ \ \href{https://linkitup.thatinsaneguy.com/}{\texttt{linkitup.thatinsaneguy.com}}
+	\begin{highlights}
+		\item Built a \textbf{data enrichment platform} in \textbf{Python} using \textbf{Pandas} and \textbf{Selenium} to extract LinkedIn profiles and verified emails from unstructured sources, processing \textbf{1000+ records per batch}.
+		\item Developed a \textbf{Next.js} and \textbf{React.js} frontend with drag and drop Excel upload, real time progress indicators, and interactive data tables for analyst workflows.
+		\item Architected a multithreaded \textbf{ETL} pipeline orchestrated with \textbf{n8n}, integrating scraping, SalesQL APIs, \textbf{Redis} caching, and \textbf{MongoDB}; reduced repeat request time by \textbf{45\%}.
+		\item Enabled analytics dashboards with \textbf{Chart.js} and \textbf{D3.js}; deployed with \textbf{Docker} and \textbf{CI/CD} (\textbf{GitHub Actions}) maintaining \textbf{99.5\% uptime}.
+	\end{highlights}
+\end{onecolentry}
+
+\vspace{0.15 cm}
+
+\begin{onecolentry}
+	\textbf{BrownMailer: Full Stack Data Ingestion Platform} \hfill Personal Project \ \ \ \href{https://youtu.be/mUitmexEZ70?si=f4VTMKZfLqhAMujB}{\texttt{youtube/demo}}
+	\begin{highlights}
+		\item Built an end to end platform with \textbf{Flask} (\textbf{Python}) backend and \textbf{Jinja2} templating (\textbf{HTML5}, \textbf{CSS3}, \textbf{JavaScript}) for high volume structured data ingestion, processing \textbf{500+ records daily} and \textbf{10,000+ monthly}.
+		\item Engineered multi source \textbf{ETL} pipelines using \textbf{Selenium} and \textbf{BeautifulSoup} to extract, filter, and normalize external data into \textbf{SQL} stores with \textbf{Redis} caching and deduplication logic.
+		\item Delivered server rendered operational dashboards with \textbf{Jinja2} templates for real time pipeline tracking, interaction history, and throughput analytics, giving stakeholders visibility into ingestion and workflow status.
+		\item Deployed containerized \textbf{Flask} services with \textbf{Docker}, automated \textbf{CI/CD}, and concurrent batch processing, maintaining \textbf{99.8\% uptime} under sustained load.
+	\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\section{Education}
+\begin{twocolentry}{
+	3.44/4.00 GPA
+	}
+	\textbf{State University of New York at Binghamton}\end{twocolentry}
+
+\begin{twocolentry}{
+		
+	}
+	Master of Science in Computer Science
+\end{twocolentry}
+
+
+\vspace{0.2 cm}
+
+\section{Certifications}
+\begin{onecolentry}
+	\includegraphics[height=2cm]{../az400.png}
+	\includegraphics[height=2cm]{../az900.png}
+	\includegraphics[height=2cm]{../expert.png}
+	\includegraphics[height=2cm]{../googleit.png}
+\end{onecolentry}
+
+\begin{onecolentry}
+\begin{highlightsforbulletentries}
+	\item \textbf{Microsoft Certified: DevOps Engineer Expert} (AZ-400: Designing and Implementing Microsoft DevOps Solutions) \hfill \href{https://drive.google.com/file/d/1AjPcmWMrnxSNEUaSC6XzCVqHik7d5M1M/view?usp=drive_link}{View Credential}
+	\item \textbf{Microsoft Certified: Azure Fundamentals} (AZ-900)
+	\item \textbf{Google IT Automation with Python} Specialization \hfill \href{https://www.coursera.org/account/accomplishments/specialization/certificate/59YMRC67LBUQ}{View Credential}
+	\item \textbf{DeepLearning.AI TensorFlow Developer} Specialization \hfill \href{https://www.coursera.org/account/accomplishments/specialization/certificate/TQ7D6RBM58JJ}{View Credential}
+\end{highlightsforbulletentries}
+\end{onecolentry}
+
+
+\end{document}
