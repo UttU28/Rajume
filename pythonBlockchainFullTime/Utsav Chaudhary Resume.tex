@@ -1,0 +1,369 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{\textbullet} % ATS-friendly bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\resumeheading}[2]{%
+    \begin{onecolentry}
+        #1 \hfill #2
+    \end{onecolentry}
+} % ATS-friendly single-line role and date header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in July 2026}\hspace{\widthof{Last updated in July 2026}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy28.netlify.app/}{thatinsaneguy.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.3 cm}
+
+
+\begin{onecolentry}
+	Senior \textbf{Data GenAI Engineer} with \textbf{5+ years} building \textbf{Python} data pipelines, \textbf{ML} models, and \textbf{GenAI} systems for analytics, internal tools, and tokenization workflows.
+	Proficient in \textbf{multi-agent} orchestration with \textbf{GPT-4o} and \textbf{GPT-4o-mini}, \textbf{RAG} (chunking, \textbf{embeddings}, vector search, top-k retrieval), \textbf{Hugging Face} fine-tunes, and \textbf{FastAPI} / \textbf{Node.js} service layers.
+	Experienced with \textbf{ETL} and time-series \textbf{ML} (\textbf{SARIMA}, \textbf{Pandas}), plus \textbf{Ethereum} token and wallet work (\textbf{ERC-20}, \textbf{ERC-1404}, \textbf{ERC-3643}, \textbf{Fireblocks}, \textbf{MetaMask}).
+\end{onecolentry}
+
+
+\section{Technical Skills}
+
+\textbf{Programming \& Frameworks:}
+Python, JavaScript, React.js, Node.js, FastAPI, Flask, Pydantic, REST APIs, WebSockets, HTML, CSS, C\#
+
+\vspace{0.25em}
+
+\textbf{AI, ML \& GenAI:}
+GPT-4o, GPT-4o-mini, multi-agent systems, Hugging Face, Transformers, RAG, embeddings, vector databases, cosine similarity, ANN, top-k retrieval, SARIMA, Pandas, NumPy, TensorFlow Lite
+
+\vspace{0.25em}
+
+\textbf{Data \& Analytics:}
+ETL, data ingestion, chunking, metadata tagging, D3.js, Chart.js, SQL, MAPE, RMSE
+
+\vspace{0.25em}
+
+\textbf{Databases:}
+MongoDB, PostgreSQL, MySQL, SQLite, Redis, Firebase, Firestore, Amazon RDS, Amazon Aurora, Amazon DynamoDB, Amazon DocumentDB, Amazon ElastiCache, Azure SQL, vector stores
+
+\vspace{0.25em}
+
+\textbf{Blockchain \& Web3:}
+Solidity, Ethereum, ERC-20, ERC-1404, ERC-3643, Fireblocks, MetaMask
+
+\vspace{0.25em}
+
+\textbf{Tools \& APIs:}
+Selenium, BeautifulSoup, Google Search API, Gmail API, Unity3D, Git, GitHub, Bitbucket, Jira, Linux, Windows, macOS
+
+
+
+\section{Experience}
+
+\resumeheading{\textbf{Sr. Python Blockchain Developer}, Hybrid, \textbf{LABS196 Innovations}, TX}{Feb 2025 - Present}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Partnered with product and ops to design a \textbf{multi-agent} Python workflow. I owned the \textbf{Manager agent} (\textbf{GPT-4o}) that plans tasks, picks tools, and routes work to specialist agents.
+	\item Worked with the team on an \textbf{Event Finder agent} (\textbf{GPT-4o-mini}). I wired \textbf{Google Search API} and \textbf{Selenium} tools so it could scrape pages and hand structured event lists back to the manager.
+	\item Built the \textbf{Data Refinement agent} (DB and \textbf{data cleaner} tools) while coordinating with backend on \textbf{MongoDB}/\textbf{SQL} schemas so cleaned records were usable by later agents.
+	\item Collaborated with outreach on an \textbf{Email Formation agent} (\textbf{GPT-4o}) and \textbf{Gmail API} drafts. I added manager approval gates so nothing sent without a review step.
+	\item Owned the shared tool layer (search, scrape, DB, cleaner, Gmail) as callable functions with schemas, retries, and logs so the rest of the team could add tools without rewriting agent prompts.
+	\item Fine-tuned a \textbf{Hugging Face} transformer for field extraction (names, dates, venues, status) from messy scrape and CRM text, then plugged it in as a refinement-agent tool before data hit MongoDB.
+	\item Wrote \textbf{Solidity} token POCs on \textbf{Ethereum} for \textbf{ERC-20}, \textbf{ERC-1404}, and \textbf{ERC-3643} with engineering and compliance review on mint/burn, transfer rules, and event schemas.
+	\item Built the \textbf{Web3} wallet and transaction path with \textbf{Fireblocks} and \textbf{MetaMask} (create, sign, transfer) and used \textbf{Python} to parse on-chain activity into datasets the team used for monitoring.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Data Science Specialist}, On-Site, \textbf{Finix196 Capital}, TX}{Jan 2024 - Feb 2025}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Worked with internal support and document owners on a \textbf{RAG} QnA tool for finance and tokenization docs. I owned the retrieval pipeline so the team could ask questions instead of digging through folders.
+	\item Wrote \textbf{Python} ingestion jobs (chunking, metadata, \textbf{embeddings}, \textbf{vector DB} upserts) and aligned doc types and tags with the people who owned the source PDFs.
+	\item Implemented query flow (embed question, \textbf{cosine similarity} / ANN, \textbf{top-k}, \textbf{LLM} answer with citations) as the core DS piece, then reviewed sample answers with support before we widened access.
+	\item Automated document refresh in \textbf{Python} (new files, re-chunk, re-embed, upsert) so ops did not have to rebuild the index by hand when policies changed.
+	\item Built the chat \textbf{UI} in \textbf{Node.js} with a \textbf{Python}/\textbf{FastAPI} backend, pairing with another engineer on the frontend while I owned retrieval, ranking, and answer generation.
+	\item Tuned chunk size, overlap, metadata filters, and top-k with support feedback so answers stayed on-policy and fewer tickets came back as "wrong doc."
+\end{highlights}
+\end{onecolentry}
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Data Engineer CO-OP}, On-Site, \textbf{Midh Technologies Inc}, TX}{June 2023 - Dec 2023}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Worked on a team \textbf{POC} as a co-op to forecast \textbf{fuel distribution} by location using \textbf{SARIMA}, so planners could match supply to seasonal demand instead of a single average for every site.
+	\item Cleaned and joined location time series in \textbf{Python} (\textbf{Pandas}) with seniors: busy vs remote sites, weekend vs weekday load, and seasonal peaks, then split train/test for model checks.
+	\item Helped fit and compare \textbf{SARIMA} models per location (order, seasonal period, stationarity) and built a simple predictor that output expected fuel volume for upcoming weeks.
+	\item Pair-programmed with the data science team on error review (MAPE/RMSE by site type) and documented which locations needed their own seasonal pattern vs a shared regional model.
+	\item Presented POC results to ops and mentors, and wrapped the predictor in a small \textbf{Python} script/notebook so the team could rerun forecasts when new weekly data landed.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Automation Developer}, Hybrid, \textbf{Compendious Medialabs Pvt. Ltd.}, IN}{June 2021 - July 2022}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Worked with analysts on a \textbf{React} and \textbf{FastAPI} metrics platform. I owned the \textbf{Python} APIs (\textbf{Pydantic}, \textbf{REST}) that kept analytics calls around \textbf{250ms}.
+	\item Built \textbf{Python} scrape and \textbf{ETL} jobs with \textbf{Selenium}, \textbf{BeautifulSoup}, and \textbf{Pandas}, cutting manual collection time by about \textbf{60\%}.
+	\item Added \textbf{WebSocket} streaming for high-frequency metrics so ops dashboards stayed current without full page reloads.
+	\item Partnered on \textbf{D3.js} / \textbf{Chart.js} dashboard views and tightened \textbf{SQL} curation so reporting was faster to load (about \textbf{45\%} quicker viz for the same workloads).
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Software Engineer}, Remote, \textbf{VRoKCs}, KS}{March 2020 - Sept 2020}
+\begin{onecolentry}
+\begin{highlights}
+	\item Partnered with ML engineers on a \textbf{sign language} translation pipeline. I handled \textbf{Python} preprocessing for data collection, annotation, and dataset prep.
+	\item Connected that pipeline to \textbf{Unity3D} for live ASL in AR, and helped run stakeholder demos with the ML group.
+	\item Built a \textbf{Flask} app (\textbf{Python}, HTML, CSS, JavaScript) with \textbf{TensorFlow Lite} so the team could test the model in the browser via image upload and webcam.
+	\item Tuned inference latency and basic data-quality checks so in-browser predictions stayed usable during those demos.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Game Developer / Web Backend}, On-Site, \textbf{underDOGS Studio}, IN}{March 2019 - July 2019}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Worked with game and backend folks to wire the \textbf{Quarters API} across titles (wallets, points-to-Quarters, in-game currency). I owned the conversion and transaction API path.
+	\item Built \textbf{POC} modules in \textbf{Unity3D} that linked \textbf{payments}, \textbf{inventory}, and \textbf{shipping} into one transaction layer for the team.
+	\item Added unit and integration tests around those APIs with the team before production releases.
+	\item Tightened real-time client/server flows in \textbf{Python} and \textbf{C\#} so payments still behaved when a request failed or the network dropped.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.2 cm}
+
+\section{Education}
+
+\resumeheading{\textbf{State University of New York at Binghamton}}{Aug 2022 - Dec 2023}
+
+\begin{onecolentry}
+	Master of Science in Computer Science \hfill 3.44/4.00 GPA
+\end{onecolentry}
+
+
+\vspace{0.2 cm}
+
+\section{Certifications}
+
+\begin{onecolentry}
+	\includegraphics[height=2cm]{../az400.png}
+	\includegraphics[height=2cm]{../az900.png}
+	\includegraphics[height=2cm]{../expert.png}
+	\includegraphics[height=2cm]{../googleit.png}
+
+	\textbf{Microsoft Certified: DevOps Engineer Expert} \hfill \href{https://drive.google.com/file/d/1AjPcmWMrnxSNEUaSC6XzCVqHik7d5M1M/view?usp=drive_link}{View Credential}
+
+	AZ-400: Designing and Implementing Microsoft DevOps Solutions
+
+	AZ-900: Microsoft Certified: Azure Fundamentals
+
+	\textbf{Google IT Automation with Python} (Specialization) \hfill \href{https://www.coursera.org/account/accomplishments/specialization/certificate/59YMRC67LBUQ}{View Credential}
+\end{onecolentry}
+
+
+\end{document}

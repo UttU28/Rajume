@@ -6,6 +6,7 @@ def cleanLatexArtifacts():
         '*.aux',
         '*.fdb_latexmk', 
         '*.fls',
+        '*.out',
         '*.log',
         '*.synctex.gz'
     ]
