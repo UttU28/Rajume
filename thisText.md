@@ -121,9 +121,13 @@ The platform spans AWS and Azure. On AWS we run EKS clusters; on Azure we run AK
 
 One major initiative I contributed to was GitOps with Argo CD. Before that, releases involved more manual steps and kubectl-style promotion between environments. We standardized on Git-driven deployments so cluster state matches what's in version control, and every production change is traceable. That was important for compliance — auditors and platform leadership need to see who deployed what, when, and from which approved branch.
 
-Another area is centralized cluster management with Rancher across EKS and AKS. Rancher gives us a single pane for multicloud cluster ops. We integrated Azure Entra ID for RBAC so access is least-privilege and audit-ready — not everyone gets cluster-admin, and production access is tightly controlled.
+Git is Bitbucket. CI is Bitbucket Pipelines: lint, test, Docker build, image push to ECR/ACR, terraform plan/apply. CD is Argo CD: it syncs Helm to the right cluster. Cloud-hosted runners handle PR checks and terraform plan; self-hosted runners on EKS or EC2 handle Docker builds and applies that need VPC access.
 
-Infrastructure is managed through Terraform and Ansible. Terraform handles the cloud footprint — VPCs, security groups, IAM on AWS; VNets, NSGs, Key Vault, Azure SQL on Azure. Everything is in Git with review before apply. Ansible handles configuration that doesn't fit cleanly into Terraform modules.
+I work on clusters, GitOps overlays, secrets infra, and platform Helm (Prometheus, log agents, ingress), and I review app charts before prod — probes, resources, security context, secrets handling, correct EKS vs AKS ingress annotations. Application teams build the app Helm charts and Dockerfiles. Same chart for EKS and AKS; only values change per cloud (prod/eks, prod/aks). Secrets come from AWS Secrets Manager and Azure Key Vault into Kubernetes via External Secrets Operator. Helm only references the secret name.
+
+Another area is centralized cluster management with Rancher across EKS and AKS. Rancher gives us a single pane for multicloud cluster ops. We integrated Azure Entra ID for RBAC so access is least-privilege and audit-ready — not everyone gets cluster-admin, and production access is tightly controlled. Rancher and Argo CD are complementary: Rancher = cluster management; Argo CD = app GitOps.
+
+Infrastructure is managed through Terraform and Ansible. Terraform handles the cloud footprint — VPCs, security groups, IAM, EKS/AKS, RDS on AWS; VNets, NSGs, Key Vault, Azure SQL on Azure. Everything is in Git with review before apply. Ansible handles configuration that doesn't fit cleanly into Terraform modules. Order: Terraform → Ansible → Rancher imports clusters → Argo CD deploys apps. Verify Terraform with plan in PR, apply Dev first, then walk the env ladder. Verify Ansible with --check, then re-run for idempotency.
 
 For observability I work with Prometheus, CloudWatch Logs, and the ELK Stack. I'm on the on-call rotation for platform and data pipeline services. When something breaks in production, the workflow is: alert fires → check dashboards/logs → follow or update runbook → coordinate with the owning engineering team → restore service and document the incident.
 
@@ -131,7 +135,7 @@ I also helped automate backup and retention for S3, Azure Blob Storage, and clou
 
 If I had to highlight three major contributions at Labs196, they would be:
 
-1. GitOps standardization with Argo CD across GxP-validated multicloud environments.
+1. GitOps standardization with Argo CD across GxP-validated multicloud environments, with Bitbucket Pipelines as CI.
 2. Rancher + Entra ID RBAC for centralized, audit-ready cluster operations on EKS and AKS.
 3. Terraform/Ansible IaC and automated backup/retention aligned with GxP compliance requirements.
 
@@ -143,7 +147,7 @@ GxP one-liner for interviews:
 Additional work at Delta Dental
 ```At Delta Dental, I was on the platform team supporting production Azure Kubernetes Service clusters for healthcare workloads — specifically containerized claims and payor services behind Azure Application Gateway.
 
-The business impact was direct: member eligibility, claims processing, enrollment, and the member self-service portal all depended on AKS staying up. We targeted 99.9% availability for those critical paths.
+The business impact was direct: member eligibility, claims processing, enrollment, and the member self-service portal all depended on AKS staying up. We targeted 99.9% availability for those critical paths. The stack was Azure — AKS, Application Gateway, Front Door, Azure DevOps for CI/CD, Application Insights, Grafana, Key Vault, Azure SQL.
 
 One of my biggest contributions was observability. We built centralized monitoring with Application Insights, Azure Monitor, and Grafana dashboards, tied into Azure Front Door health probes and Application Gateway metrics. That helped the team cut mean time to detect from about 30 minutes down to 5 minutes for claims adjudication and enrollment issues — which matters when members and providers are waiting on real-time eligibility and claims status.
 
@@ -153,7 +157,7 @@ For safer releases, I supported canary rollouts through Azure DevOps pipelines w
 
 On the DR side, I helped automate backup and disaster recovery for Azure SQL and other cloud-hosted data services. The team targets were aggressive for a claims system: RPO of 10 minutes and RTO of 30 minutes for critical claims transaction processing.
 
-Security was HIPAA-aligned throughout. I supported practices using Azure Key Vault for encryption and key rotation of member PHI and claims data at rest and in transit — always following standards set by senior engineers and the compliance team, not improvising security controls on my own.
+Security was HIPAA-aligned throughout. I supported practices using Azure Key Vault for encryption and key rotation of member PHI and claims data at rest and in transit, following standards set by senior engineers and the compliance team.
 
 HIPAA one-liner for interviews:
 "At Delta Dental, HIPAA meant securing member PHI and claims data with Key Vault encryption, least-privilege access, and compliance-aligned practices for everything touching production healthcare workloads."
@@ -200,6 +204,7 @@ Your answers should:
 * Show ownership, collaboration, and reliability mindset.
 * Demonstrate business impact — uptime, MTTD, deployment safety, cost, compliance — not just tool knowledge.
 * When a question maps to a JD requirement, connect your answer to **Labs196**, **Delta Dental**, or **Midh Technologies** with specific tools and outcomes.
+* Speak in first person about the work. Use the stack for that job. If they ask who set the standard, who owned the design, or how the two roles differ, then credit platform/staff/compliance and use the JD mapping — don't volunteer that up front.
 
 ### Ideal Answer Structure
 
@@ -231,7 +236,7 @@ Good Answer:
 
 "I use Argo CD when I want deployments to be driven from Git instead of someone running kubectl manually. The main benefit is that the cluster state always matches what's in the repo, and every change is traceable — which matters a lot in regulated environments.
 
-At Labs196, I contributed to GitOps workflows with Argo CD across our GxP-validated environments on EKS and AKS. We standardized how application teams promoted changes from lower environments to production, and it cut down a lot of manual release steps. One thing I always watch for is making sure secrets aren't stored in Git — we used proper secret management and RBAC so only the right teams could sync to production.
+At Labs196, I contributed to GitOps workflows with Argo CD across our GxP-validated environments on EKS and AKS. Bitbucket Pipelines handled CI — build, test, image push. Argo CD handled CD. We standardized how application teams promoted changes from lower environments to production, and it cut down a lot of manual release steps. One thing I always watch for is making sure secrets aren't stored in Git — they live in Key Vault and Secrets Manager via External Secrets, and RBAC so only the right teams could sync to production.
 
 If I'm in a small team with a simple app and no compliance requirements, I might start with a basic CI/CD pipeline before full GitOps. But for multicloud Kubernetes at scale, especially with audit requirements, Argo CD has been the right fit for us."
 
@@ -294,13 +299,16 @@ When the interviewer asks about… | Anchor to…
 Kubernetes / Helm | Labs196 EKS+AKS multicloud; Delta AKS claims workloads
 GitOps / Argo CD | Labs196 GxP-validated release standardization
 Terraform / IaC | Labs196 AWS+Azure; Compendious on-prem automation
-CI/CD | Midh GitHub Actions; Delta Azure DevOps canary pipelines
+CI/CD | Labs196 Bitbucket Pipelines (CI) + Argo CD (CD); Delta Azure DevOps canary; Midh GitHub Actions
+Helm ownership | App teams = app charts; platform = clusters, GitOps overlays, platform Helm, review
+Secrets / Git | Labs196 Key Vault + Secrets Manager → External Secrets; never in Git
 Monitoring / MTTD | Delta 30min→5min; Labs196 Prometheus/ELK/CloudWatch
 HIPAA | Delta Dental Key Vault, PHI, claims systems
 GxP / FDA / compliance | Labs196 validated envs, audit logging, retention
 DR / RTO / RPO | Delta RPO 10min / RTO 30min for claims SQL
 ML / GPU infra | Midh GPU EKS, FastAPI + API Gateway inference
 On-call / incidents | Labs196 runbooks; both Labs196 and Delta production support
+Delta vs Labs196 | Delta = Azure-only, HIPAA, Azure DevOps. Labs196 = multicloud, GxP, Bitbucket + Argo CD
 
 ### Compliance One-Liners (When Asked)
 
