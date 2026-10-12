@@ -8,7 +8,7 @@
     left=1 cm, % seperation between body and page edge from the left
     right=1 cm, % seperation between body and page edge from the right
     footskip=1.0 cm, % seperation between body and footer
-    % showframe % for debugging 
+    % showframe % for debugging
 ]{geometry} % for adjusting page geometry
 \usepackage{titlesec} % for customizing section titles
 \usepackage{graphicx}
@@ -73,8 +73,8 @@
 \renewcommand\labelitemi{\textbullet} % ATS-friendly bullet points
 \newenvironment{highlights}{
     \begin{itemize}[
-        topsep=0.10 cm,
-        parsep=0.10 cm,
+        topsep=0.02 cm,
+        parsep=0.02 cm,
         partopsep=0pt,
         itemsep=0pt,
         leftmargin=0 cm + 10pt
@@ -200,111 +200,86 @@
 
 
 \begin{onecolentry}
-	Senior \textbf{DevOps Engineer} with \textbf{7+ years} of hands-on experience building, automating, and operating \textbf{production-grade AWS and Azure infrastructure} for high availability systems in regulated and enterprise environments, growing from build, release, and backend engineering into full platform ownership.
-	Proficient in \textbf{Kubernetes and Helm orchestration}, \textbf{Infrastructure as Code} with \textbf{Terraform} and \textbf{Ansible}, \textbf{CI/CD} with \textbf{Jenkins}, \textbf{GitHub Actions}, and \textbf{Azure DevOps}, \textbf{GitOps} with \textbf{Argo CD}, and \textbf{multicloud deployments} across Dev, Test, UAT, QA, and Production.
-	Experienced leading \textbf{disaster recovery}, \textbf{observability}, \textbf{incident response}, and compliance-ready platform operations (\textbf{HIPAA}, \textbf{GxP}) that meet \textbf{SLA}, \textbf{RTO}, and \textbf{RPO} targets for business-critical systems, while partnering with development teams on \textbf{Python} automation, \textbf{secure coding}, and release quality.
+	Senior \textbf{DevOps Engineer} with \textbf{7+ years} of experience building, automating, and operating \textbf{production-grade AWS and Azure infrastructure} in \textbf{regulated utility}, \textbf{energy}, and \textbf{enterprise consulting} environments, growing from build, release, and backend engineering into full platform ownership.
+	Proficient in \textbf{Kubernetes and Helm}, \textbf{Infrastructure as Code} with \textbf{Terraform} and \textbf{Ansible}, \textbf{CI/CD} with \textbf{Jenkins}, \textbf{GitHub Actions}, and \textbf{Azure DevOps}, \textbf{GitOps} with \textbf{Argo CD}, and \textbf{multicloud deployments} across Dev, Test, UAT, QA, and Production, leading \textbf{disaster recovery}, \textbf{observability}, and \textbf{incident response} that meet \textbf{SLA}, \textbf{RTO}, and \textbf{RPO} targets.
 \end{onecolentry}
 
 
 \section{Technologies}
 
 \textbf{Cloud \& Infrastructure:}
-AWS (EC2, EKS, ECS, Fargate, Lambda, RDS, S3, EBS, VPC, IAM, CloudWatch, API Gateway, Secrets Manager, Route 53, ALB/ELB, CodeDeploy, KMS, CloudHSM),
+AWS (EC2, EKS, Lambda, RDS, S3, VPC, IAM, CloudWatch, API Gateway, Secrets Manager, Route 53, ALB/ELB, KMS),
 Azure (App Services, AKS, Azure DevOps, Azure SQL, Application Gateway, Front Door, Key Vault, Entra ID), Docker, Kubernetes, Helm, Rancher, Argo CD
 
-\vspace{0.25em}
+\vspace{0.12em}
 
-\textbf{IaC \& Automation:}
-Terraform, Ansible, Puppet, Chef, Bash, Python, PowerShell, YAML, CloudFormation, Nginx, Cron
+\textbf{IaC, Automation \& Operating Systems:}
+Terraform, Ansible, Puppet, Chef, CloudFormation, Bash, Python, PowerShell, YAML, Nginx, Cron, Linux (Ubuntu, CentOS, RHEL), Windows Server
 
-\vspace{0.25em}
+\vspace{0.12em}
 
 \textbf{CI/CD \& Version Control:}
 Jenkins, GitHub Actions, Bitbucket Pipelines, AWS CodePipeline, Azure DevOps, Git, GitHub, GitLab, Bitbucket, AWS CodeArtifact
 
-\vspace{0.25em}
+\vspace{0.12em}
 
 \textbf{Monitoring \& Logging:}
-Prometheus, Grafana, Elasticsearch, Logstash, Kibana, CloudWatch, Application Insights, Datadog, Elastic Stack
+Prometheus, Grafana, ELK Stack, CloudWatch, Application Insights, Datadog
 
-\vspace{0.25em}
+\vspace{0.12em}
 
 \textbf{Networking \& Security:}
-VPCs, VNets, Security Groups, NSGs, IAM Policies, DNS, VPN, LDAP, RBAC, SSL/TLS, OAuth 2.0, HIPAA, GxP, PCI, OWASP, vulnerability assessments, secrets management, key rotation
+VPCs, VNets, Security Groups, NSGs, IAM Policies, DNS, VPN, LDAP, RBAC, SSL/TLS, OAuth 2.0, NERC CIP, ISO 27001, PCI, OWASP, vulnerability assessments, secrets management, key rotation
 
-\vspace{0.25em}
+\vspace{0.12em}
 
-\textbf{Practices:}
-GitOps, canary releases, environment promotion, GitFlow and branching strategies, release management, on-call, incident response, root cause analysis, runbooks, SLA/SLO tracking, disaster recovery (RTO/RPO), cost optimization, code reviews, automated testing
-
-\vspace{0.25em}
-
-\textbf{Development \& Tools:}
-Python, TypeScript, JavaScript, Groovy, FastAPI, Node.js, React.js, Next.js, REST APIs, gRPC, WebSockets, PostgreSQL, MongoDB, Redis, Firebase, Kafka, Jira, Confluence
-
-\vspace{0.25em}
-
-\textbf{Operating Systems:}
-Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
+\textbf{Practices \& Development Tools:}
+GitOps, canary releases, environment promotion, incident response, disaster recovery, Python, TypeScript, FastAPI, Node.js, React.js, Next.js, PostgreSQL, MongoDB, Redis, Kafka, Jira
 
 
 
 \section{Experience}
 
-\resumeheading{\textbf{Sr. DevOps Engineer}, Hybrid, \textbf{Labs196}, TX}{Feb 2025 - Present}
+\resumeheading{\textbf{Sr. DevOps Engineer}, Hybrid, \textbf{MidAmerican Energy}, TX}{Feb 2025 - Present}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Collaborated with platform and compliance teams to support a \textbf{multicloud strategy} across \textbf{AWS} and \textbf{Azure}, helping deploy and maintain \textbf{Kubernetes} workloads on \textbf{EKS} and \textbf{AKS} with \textbf{Helm} across \textbf{Dev}, \textbf{Test}, \textbf{UAT}, \textbf{QA}, and \textbf{Production} for regulated lab and research platform services.
-	\item Contributed to \textbf{GitOps} release workflows using \textbf{Argo CD}, collaborating with platform and staff engineers to standardize application deployments and reduce manual release steps across \textbf{GxP-validated} environments.
-	\item Supported centralized cluster operations with \textbf{Rancher} managing \textbf{EKS} and \textbf{AKS} clusters, integrating \textbf{Azure Entra ID} for \textbf{RBAC}, least-privilege access, and audit-ready logging aligned with \textbf{FDA} and internal compliance reviews.
-	\item Maintained multicloud infrastructure through \textbf{Terraform} and \textbf{Ansible}, managing \textbf{AWS} resources including \textbf{VPCs}, \textbf{security groups}, \textbf{IAM policies}, and \textbf{RDS}, and \textbf{Azure} resources including \textbf{VNets}, \textbf{NSGs}, \textbf{Key Vault}, and \textbf{Azure SQL} with version-controlled \textbf{IaC}.
-	\item Contributed to cross-cloud \textbf{observability} using \textbf{Prometheus}, \textbf{CloudWatch Logs}, and the \textbf{ELK Stack}, supporting on-call incident response and production \textbf{SLA} targets for platform and data pipeline services.
-	\item Helped automate backup and retention workflows for \textbf{S3}, \textbf{Azure Blob Storage}, and cloud-hosted databases, following \textbf{GxP} retention requirements established by compliance and platform leadership.
-	\item Participated in \textbf{on-call} rotations and \textbf{incident response}, creating \textbf{runbooks} and coordinating with engineering teams to troubleshoot and restore production services across both cloud environments.
-	\item Built and maintained \textbf{CI/CD pipelines} in \textbf{GitHub Actions} and \textbf{Bitbucket Pipelines} with unit tests, \textbf{Docker} image builds, image and dependency \textbf{security scanning}, \textbf{Terraform plan/apply} gates, and \textbf{environment promotion} from \textbf{Dev} through \textbf{Prod}.
-	\item Provided technical leadership on parallel platform workstreams, leading \textbf{design reviews} and \textbf{code reviews} for pipeline, \textbf{IaC}, and \textbf{Helm} chart changes so teams stayed consistent on \textbf{branching strategies}, versioning, and documentation standards.
-	\item Containerized and deployed \textbf{Python} and \textbf{Node.js} microservices, \textbf{AI agents}, and \textbf{MCP servers} onto \textbf{EKS}/\textbf{AKS}, managing \textbf{Kubernetes} secrets, config maps, \textbf{HPA} auto scaling, resource limits, and health probes for reliable rollouts.
-	\item Managed secrets and credentials for \textbf{Stripe}, \textbf{HubSpot}, \textbf{Sumsub}, and \textbf{Azure OpenAI} integrations through \textbf{AWS Secrets Manager} and \textbf{Azure Key Vault}, applying \textbf{PCI}-aligned access controls and key rotation.
-	\item Led \textbf{root cause analysis} for production incidents using \textbf{Prometheus}, \textbf{Grafana}, and \textbf{CloudWatch} metrics and logs, publishing postmortems and follow-up automation that reduced repeat alerts.
-	\item Wrote \textbf{Python} and \textbf{Bash} automation for environment bootstrapping, cluster maintenance, log rotation, and cost reporting, and tuned node groups and storage classes to control \textbf{AWS} and \textbf{Azure} spend.
+	\item Collaborated with platform and compliance teams on a \textbf{multicloud} \textbf{AWS}/\textbf{Azure} strategy, deploying \textbf{Kubernetes} workloads on \textbf{EKS}/\textbf{AKS} with \textbf{Helm} across \textbf{Dev} through \textbf{Production} for regulated \textbf{utility} platform services.
+	\item Supported \textbf{GitOps} releases with \textbf{Argo CD} and \textbf{Rancher}, integrating \textbf{Azure Entra ID} for \textbf{RBAC} and \textbf{NERC CIP}-aligned audit logging.
+	\item Maintained version-controlled \textbf{IaC} with \textbf{Terraform} and \textbf{Ansible}: \textbf{AWS VPCs}, \textbf{security groups}, \textbf{IAM policies}, \textbf{RDS}, \textbf{Azure VNets}, \textbf{NSGs}, \textbf{Key Vault}, \textbf{Azure SQL}.
+	\item Built \textbf{observability} with \textbf{Prometheus}, \textbf{CloudWatch}, and \textbf{ELK} for \textbf{grid telemetry} and \textbf{smart meter (AMI)} pipelines; joined \textbf{on-call} \textbf{incident response} with \textbf{runbooks} restoring \textbf{outage management} to \textbf{SLA}.
+	\item Built \textbf{CI/CD} in \textbf{GitHub Actions} and \textbf{Bitbucket Pipelines}: unit tests, \textbf{Docker} builds, \textbf{security scanning}, \textbf{Terraform} gates, \textbf{environment promotion}; led \textbf{design} and \textbf{code reviews}.
+	\item Containerized \textbf{Python}/\textbf{Node.js} microservices and \textbf{ML load forecasting} on \textbf{EKS}/\textbf{AKS} with \textbf{HPA} scaling; automated \textbf{S3}/\textbf{Blob} and \textbf{billing database} backups per \textbf{data retention} rules.
+	\item Managed secrets for \textbf{ERP}, \textbf{customer information system (CIS)}, and market data via \textbf{Secrets Manager}/\textbf{Key Vault} with \textbf{PCI}-aligned controls; led \textbf{root cause analysis} and \textbf{Python}/\textbf{Bash} \textbf{cost control} automation.
 \end{highlights}
 \end{onecolentry}
 
 
-\vspace{0.15 cm}
-\resumeheading{\textbf{DevOps Engineer}, On-Site, \textbf{Delta Dental}, GA}{Jan 2024 - Jan 2025}
+\vspace{0.12 cm}
+\resumeheading{\textbf{DevOps Engineer}, On-Site, \textbf{Chevron}, GA}{Jan 2024 - Jan 2025}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Collaborated with a distributed platform team, including \textbf{California-based engineers}, to support production \textbf{Azure Kubernetes Service (AKS)} clusters running \textbf{containerized claims and payor workloads} behind \textbf{Azure Application Gateway}, helping maintain \textbf{99.9\% availability} for \textbf{member eligibility} and \textbf{claims processing} services.
-	\item Contributed to centralized \textbf{monitoring and alerting} using \textbf{Application Insights}, \textbf{Azure Monitor}, and \textbf{Grafana dashboards}, integrated with \textbf{Azure Front Door} health probes and gateway metrics, supporting a team reduction in \textbf{mean time to detect (MTTD)} from \textbf{30 minutes} to \textbf{5 minutes} across \textbf{claims adjudication} and \textbf{enrollment} workflows.
-	\item Assisted in migrating legacy applications to \textbf{cloud-native AKS} on Azure, working with senior DevOps engineers to improve \textbf{resource utilization} by \textbf{40\%} for the \textbf{member enrollment} and \textbf{provider portal} platforms.
-	\item Supported \textbf{canary release} rollouts through \textbf{Azure DevOps} pipelines with \textbf{Application Gateway} traffic splitting under senior guidance, contributing to a \textbf{75\%} reduction in deployment-related incidents for the \textbf{member self-service portal}.
-	\item Helped automate \textbf{backup} and \textbf{disaster recovery (DR)} for \textbf{Azure SQL} and cloud-hosted data services, supporting team targets of \textbf{RPO} \textbf{10 minutes} and \textbf{RTO} \textbf{30 minutes} for critical \textbf{claims transaction processing} systems.
-	\item Supported \textbf{HIPAA-aligned} security practices using \textbf{Azure Key Vault} for encryption and key rotation of \textbf{member PHI and claims data} at rest and in transit, following standards set by senior engineers and the compliance team.
-	\item Maintained \textbf{Terraform} modules for \textbf{AKS}, \textbf{Azure SQL}, \textbf{Application Gateway}, \textbf{Front Door}, \textbf{VNets}, and \textbf{NSGs}, with remote state, pull request plan reviews, and drift detection across environments.
-	\item Supported \textbf{environment promotion} across \textbf{Dev}, \textbf{Test}, \textbf{UAT}, and \textbf{Prod} through \textbf{Azure DevOps} multi-stage pipelines with approval gates, \textbf{Git workflows}, and \textbf{branching strategies}, keeping \textbf{Angular}, \textbf{React}, \textbf{Python}, and \textbf{Node.js} service releases consistent.
-	\item Containerized \textbf{FastAPI}/\textbf{Flask} and \textbf{Node.js} claims and eligibility APIs with \textbf{Docker}, adding \textbf{automated testing} and image scanning to pipelines before \textbf{AKS} promotion.
-	\item Led \textbf{root cause analysis} and \textbf{vulnerability assessments} with Risk and Compliance, applying \textbf{OWASP} findings and tracking remediation through release cycles.
-	\item Wrote \textbf{PowerShell}, \textbf{Bash}, and \textbf{Python} scripts for certificate renewal, scheduled maintenance, and log export, reducing repetitive operational work for the platform team.
+	\item Supported production \textbf{AKS} clusters running \textbf{upstream and field operations workloads} behind \textbf{Application Gateway} with a distributed team, maintaining \textbf{99.9\% availability} for \textbf{drilling reporting} services.
+	\item Supported \textbf{monitoring} with \textbf{Application Insights}, \textbf{Azure Monitor}, and \textbf{Grafana}, contributing to \textbf{MTTD} dropping from \textbf{30} to \textbf{5 minutes} across \textbf{refinery maintenance} workflows.
+	\item Assisted with migrating legacy apps to \textbf{cloud-native AKS}, improving \textbf{resource utilization} \textbf{40\%}, while \textbf{canary releases} via \textbf{Azure DevOps} traffic splitting cut deployment incidents \textbf{75\%}.
+	\item Maintained \textbf{Terraform} modules for \textbf{AKS}, \textbf{Azure SQL}, \textbf{Front Door}, \textbf{VNets}, \textbf{NSGs} with remote state and drift detection; automated \textbf{DR} to meet \textbf{RPO 10} and \textbf{RTO 30 minute} targets.
+	\item Supported \textbf{environment promotion} across \textbf{Dev} through \textbf{Prod} with \textbf{Azure DevOps} approval gates and \textbf{Git workflows}, containerizing \textbf{FastAPI} and \textbf{Node.js} \textbf{telemetry APIs} with \textbf{automated testing}.
+	\item Applied \textbf{Key Vault} encryption and key rotation for \textbf{proprietary seismic and operational data}; led \textbf{root cause analysis} and \textbf{vulnerability assessments} with \textbf{OWASP} findings.
 \end{highlights}
 \end{onecolentry}
 
 
 
-\vspace{0.15 cm}
+\vspace{0.12 cm}
 \resumeheading{\textbf{DevOps Engineer CO-OP}, On-Site, \textbf{Midh Technologies}, TX}{June 2023 - Dec 2023}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Managed production infrastructure for ML workloads, supporting \textbf{GPU backed Kubernetes clusters} on \textbf{AWS EKS} with cost optimization strategies including node pool configuration, resource quotas, and auto scaling policies.
+	\item Managed \textbf{GPU backed Kubernetes clusters} on \textbf{AWS EKS} for ML workloads with cost optimization through node pool configuration, resource quotas, and auto scaling policies.
 	\item Designed high-performance inference infrastructure deploying \textbf{FastAPI} endpoints behind \textbf{AWS API Gateway} with \textbf{IAM authentication}, request throttling, and \textbf{Lambda} integrations for scalable ML inference.
-	\item Developed infrastructure automation through \textbf{Ansible playbook} development, reducing manual server configuration and deployment time by \textbf{50\%} while ensuring configuration consistency.
-	\item Built production \textbf{CI/CD pipelines} with \textbf{GitHub Actions}, automating testing, Docker image builds, security scanning, and deployments to \textbf{AWS Amplify} and \textbf{EKS} environments.
-	\item Implemented infrastructure security practices including \textbf{RBAC} policies, \textbf{IAM role} management, and \textbf{VPC} security configurations across AWS services and application layers.
-	\item Provisioned \textbf{AWS} and \textbf{Azure} environments with \textbf{Terraform}, including \textbf{EKS}/\textbf{AKS} clusters, \textbf{API Gateway}/\textbf{Azure API Management}, \textbf{S3}, and \textbf{PostgreSQL}, enabling repeatable \textbf{environment promotion}.
-	\item Extended pipelines to \textbf{Azure DevOps} for \textbf{Azure App Service} deployments of the \textbf{Next.js} company platform, adding \textbf{pytest} gates and rollback steps.
+	\item Cut manual server configuration time by \textbf{50\%} with \textbf{Ansible playbooks}, and built production \textbf{CI/CD} in \textbf{GitHub Actions} and \textbf{Azure DevOps} with tests, \textbf{Docker} builds, \textbf{security scanning}, and \textbf{pytest} gates to \textbf{EKS}, \textbf{Amplify}, and \textbf{App Service}.
+	\item Provisioned \textbf{AWS} and \textbf{Azure} environments with \textbf{Terraform} (\textbf{EKS}/\textbf{AKS}, \textbf{API Gateway}/\textbf{Azure API Management}, \textbf{S3}, \textbf{PostgreSQL}) enabling repeatable \textbf{environment promotion}, with \textbf{RBAC}, \textbf{IAM role}, and \textbf{VPC} security hardening across layers.
 	\item Operated scheduled \textbf{Python} \textbf{ETL} jobs loading \textbf{PostgreSQL} and \textbf{MongoDB}, with containerized runs, retries, and \textbf{CloudWatch} alerting on failures.
 \end{highlights}
 \end{onecolentry}
@@ -312,18 +287,15 @@ Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
 
 
 
-\vspace{0.15 cm}
-\resumeheading{\textbf{DevOps/Platform Engineer}, On-Site, \textbf{Compendious Medialabs Pvt. Ltd.}, IN}{June 2021 - July 2022}
+\vspace{0.12 cm}
+\resumeheading{\textbf{DevOps/Platform Engineer}, On-Site, \textbf{Accenture}, India}{June 2021 - July 2022}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Managed hybrid infrastructure for \textbf{on premise Linux servers} (Ubuntu) with containerized deployments using \textbf{Docker}, establishing infrastructure reliability and automation through \textbf{Bash} scripting and configuration management.
-	\item Designed and implemented self hosted CI/CD infrastructure deploying \textbf{GitHub Actions runners} on local infrastructure, building production grade pipelines for automated testing, Docker builds, and multiple environment deployments.
-	\item Established production grade reverse proxy infrastructure with \textbf{Nginx} and \textbf{SSL/TLS} termination, optimizing external service exposure with \textbf{250ms} average response time and high availability.
-	\item Implemented observability strategy deploying \textbf{Prometheus} and \textbf{Grafana} monitoring on local infrastructure; automated infrastructure tasks with \textbf{Python/Bash} scripting, reducing manual operational overhead by \textbf{60\%}.
-	\item Added \textbf{Jenkins} pipelines alongside \textbf{GitHub Actions} for legacy services, standardizing \textbf{Git} \textbf{branching strategies}, build artifacts, and release tagging.
-	\item Containerized \textbf{FastAPI} and \textbf{React} applications and scheduled \textbf{Python} scraping/\textbf{ETL} jobs (\textbf{Selenium}, \textbf{Pandas}) with \textbf{Docker} and \textbf{Cron}, with logging and failure alerts.
-	\item Hardened \textbf{Linux} hosts with firewall rules, \textbf{SSH} key access, patching schedules, and automated backups, and kept \textbf{WebSocket} streaming services stable behind \textbf{Nginx}.
+	\item Delivered platform engineering for \textbf{enterprise client accounts} in a global consulting engagement, managing hybrid \textbf{on premise Linux servers} (Ubuntu) with \textbf{Docker} deployments, hardened per \textbf{ISO 27001}-aligned standards with firewall rules, \textbf{SSH} keys, patching, and automated backups.
+	\item Designed self hosted \textbf{CI/CD} with \textbf{GitHub Actions runners} and \textbf{Jenkins} on client infrastructure, building production grade pipelines for automated testing, \textbf{Docker} builds, and multi-environment deployments with standardized \textbf{Git} \textbf{branching strategies}, artifacts, and release tagging.
+	\item Established \textbf{Nginx} reverse proxy infrastructure with \textbf{SSL/TLS} termination for client-facing applications at \textbf{250ms} average response time and high availability, keeping \textbf{WebSocket} streaming stable, and deployed \textbf{Prometheus}/\textbf{Grafana} \textbf{observability}.
+	\item Containerized client \textbf{FastAPI} and \textbf{React} applications and scheduled \textbf{Python} scraping/\textbf{ETL} jobs (\textbf{Selenium}, \textbf{Pandas}) with \textbf{Docker} and \textbf{Cron}, automating \textbf{IT services} operations with \textbf{Python/Bash} and cutting manual overhead \textbf{60\%}.
 \end{highlights}
 \end{onecolentry}
 
@@ -332,17 +304,14 @@ Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
 
 
 
-\vspace{0.15 cm}
+\vspace{0.12 cm}
 \resumeheading{\textbf{Software Engineer / DevOps}, Remote, \textbf{VRoKCs}, MO}{March 2020 - May 2021}
 \begin{onecolentry}
 \begin{highlights}
-	\item Managed production infrastructure on \textbf{Azure}, deploying \textbf{Flask web applications} on \textbf{Azure App Services} with high availability configurations, auto scaling, and integrated monitoring.
-	\item Built infrastructure automation through \textbf{Azure DevOps} pipelines for ML model deployment, implementing artifact storage with \textbf{Azure Blob Storage} and version control workflows.
-	\item Designed containerized infrastructure using \textbf{Azure Container Instances} and \textbf{Docker} for ML inference services, ensuring environment parity between development and production with consistent deployment practices.
-	\item Developed CI/CD infrastructure using \textbf{Azure DevOps} for ML lifecycle management, automating training and deployment workflows and reducing deployment cycles by \textbf{40\%} through pipeline optimization.
-	\item Deployed \textbf{Flask} and \textbf{TensorFlow Lite} inference services with \textbf{Docker}, keeping image upload, webcam streaming, and live prediction endpoints responsive under load.
-	\item Configured \textbf{Azure Monitor} alerts, App Service scaling rules, and deployment slots for zero-downtime swaps across compute, storage, and networking.
-	\item Added \textbf{automated testing} and \textbf{secure coding} checks to release pipelines for critical-path \textbf{Flask} APIs, and partnered with ML engineers on \textbf{Python} preprocessing pipelines for data collection and dataset preparation.
+	\item Managed production infrastructure on \textbf{Azure}, deploying \textbf{Flask web applications} on \textbf{Azure App Services} with high availability, auto scaling, \textbf{Azure Monitor} alerting, and deployment slots for zero-downtime swaps.
+	\item Developed \textbf{CI/CD} using \textbf{Azure DevOps} for \textbf{ML lifecycle} management, automating training and deployment workflows with \textbf{Azure Blob Storage} artifacts, reducing deployment cycles by \textbf{40\%}.
+	\item Designed containerized infrastructure with \textbf{Azure Container Instances} and \textbf{Docker} for \textbf{Flask} and \textbf{TensorFlow Lite} inference, keeping image upload, webcam streaming, and live prediction endpoints responsive with dev-prod parity.
+	\item Added \textbf{automated testing} and \textbf{secure coding} checks to release pipelines for critical-path \textbf{Flask} APIs, partnering with ML engineers on \textbf{Python} preprocessing for data collection and datasets.
 \end{highlights}
 \end{onecolentry}
 
@@ -350,35 +319,29 @@ Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
 
 
 
-\vspace{0.15 cm}
-\resumeheading{\textbf{Software Developer / Build \& Release}, On-Site, \textbf{Shree Hari Marketing PVT. LTD.}, IN}{March 2019 - Feb 2020}
+\vspace{0.12 cm}
+\resumeheading{\textbf{Software Developer / Build \& Release}, On-Site, \textbf{Wonderbiz.in}, India}{March 2019 - Feb 2020}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Set up \textbf{Jenkins} build jobs and \textbf{Git} versioning with release checklists for \textbf{environment promotion} across Dev, Test, and Production for order, inventory, and customer services.
-	\item Deployed and maintained \textbf{Python} \textbf{Flask} and \textbf{Node.js} \textbf{REST APIs} and the \textbf{Angular} UI on \textbf{Linux} servers behind \textbf{Nginx}, with service restarts, log rotation, and health checks.
-	\item Automated \textbf{SQL Server} backups, reporting, and data cleanup with \textbf{Python} and \textbf{Bash} scripts scheduled through \textbf{Cron}, reducing manual operational tasks.
-	\item Ran unit and integration \textbf{automated testing}, \textbf{code reviews}, and \textbf{secure coding} checks (input validation, auth, logging) as release gates before production deployments.
+	\item Set up \textbf{Jenkins} build jobs and \textbf{Git} versioning with release checklists for \textbf{environment promotion} across Dev, Test, and Production for \textbf{Industrial IoT} sensor ingestion, \textbf{asset tracking}, and dashboard services.
+	\item Deployed and maintained \textbf{Python} \textbf{Flask} and \textbf{Node.js} \textbf{REST APIs} and the \textbf{Angular} \textbf{analytics dashboard} on \textbf{Linux} servers behind \textbf{Nginx}, with service restarts, log rotation, and health checks.
+	\item Automated \textbf{SQL Server} backups, \textbf{sensor data} cleanup, and reporting with \textbf{Python} and \textbf{Bash} scripts scheduled through \textbf{Cron}, with \textbf{automated testing} and \textbf{secure coding} checks as release gates.
 \end{highlights}
 \end{onecolentry}
 
 
 
-
-
-\vspace{0.15 cm}
-\resumeheading{\textbf{Web/Game Developer}, On-Site, \textbf{underDogs Gaming Studios}, IN}{Jan 2018 - Feb 2019}
+\vspace{0.12 cm}
+\resumeheading{\textbf{Web/Game Developer}, On-Site, \textbf{underDogs Gaming Studios}, India}{Jan 2018 - Feb 2019}
 
 \begin{onecolentry}
 \begin{highlights}
-	\item Contributed to backend API infrastructure for gaming services, integrating and optimizing \textbf{Quarters API} across multiple games with secure transaction, supporting \textbf{load balancing} and \textbf{API rate limiting} for high availability systems.
-	\item Supported infrastructure reliability initiatives by optimizing real time client server communication, validating and refining backend interaction flows using \textbf{Python} and \textbf{C\#}, implementing error handling and health monitoring.
-	\item Developed unified transaction infrastructure connecting external services (\textbf{payments}, \textbf{inventory}, \textbf{shipping}) to internal game systems, following consistent API patterns and infrastructure best practices.
-	\item Participated in infrastructure security and testing practices, implementing \textbf{API security best practices}, comprehensive logging, and integration testing frameworks for edge cases including payment failures and network resilience.
-	\item Stood up release and hosting for game backends with \textbf{Git} source control, scripted deployments, and \textbf{health checks} for \textbf{Python} and \textbf{Node.js} services.
+	\item Contributed to backend API infrastructure for gaming services, integrating and optimizing the \textbf{Quarters API} for secure transactions across multiple games, with \textbf{load balancing} and \textbf{API rate limiting} for high availability.
+	\item Optimized real time client server communication in \textbf{Python} and \textbf{C\#}, connecting external services (\textbf{payments}, \textbf{inventory}, \textbf{shipping}) to internal game systems with consistent API patterns.
+	\item Applied \textbf{API security}, logging, and integration \textbf{automated testing}, and stood up release and hosting for game backends with \textbf{Git} source control and \textbf{health checks}.
 \end{highlights}
 \end{onecolentry}
-
 
 
 
@@ -389,20 +352,14 @@ Linux (Ubuntu, CentOS, RHEL), Windows Server, macOS, Raspberry Pi
 \resumeheading{\textbf{State University of New York at Binghamton}}{Aug 2022 - Dec 2023}
 
 \begin{onecolentry}
-	Master of Science in Computer Science \hfill 3.44/4.00 GPA
+	Master of Science in Computer Science \hfill 3.4/4.00 GPA
 \end{onecolentry}
-
 
 \vspace{0.2 cm}
 
 \section{Certifications}
 
 \begin{onecolentry}
-	\includegraphics[height=2cm]{../zimages/az400.png}
-	\includegraphics[height=2cm]{../zimages/az900.png}
-	\includegraphics[height=2cm]{../zimages/expert.png}
-	\includegraphics[height=2cm]{../zimages/googleit.png}
-
 	\textbf{Microsoft Certified: DevOps Engineer Expert} \hfill \href{https://drive.google.com/file/d/1AjPcmWMrnxSNEUaSC6XzCVqHik7d5M1M/view?usp=drive_link}{View Credential}
 
 	AZ-400: Designing and Implementing Microsoft DevOps Solutions

@@ -1,0 +1,302 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{2\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.18 cm
+}{
+    % bottom space:
+    0.12 cm
+} % section title spacing
+
+\renewcommand\labelitemi{\textbullet} % ATS-friendly bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.05 cm,
+        parsep=0.03 cm,
+        partopsep=0pt,
+        itemsep=0.04 cm,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\resumeheading}[2]{%
+    \begin{onecolentry}
+        #1 \hfill #2
+    \end{onecolentry}
+} % ATS-friendly single-line role and date header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in October 2026}\hspace{\widthof{Last updated in October 2026}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{|}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy28.netlify.app/}{thatinsaneguy.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.1 cm}
+
+
+\begin{onecolentry}
+	\textbf{Computer Science} graduate doing \textbf{IT support} for \textbf{Windows} and \textbf{Mac} devices: \textbf{Jira} tickets, remote \textbf{SSH} sessions, and hardware and software updates. Skilled with \textbf{Windows} and \textbf{macOS}, \textbf{Ghost}, \textbf{MDT}, and \textbf{SCCM}, vendor diagnostics, and \textbf{quality control} on \textbf{Tier One} hardware (\textbf{HP}, \textbf{IBM}, \textbf{Toshiba}, \textbf{Compaq}).
+	Experienced supporting end users through break/fix, messaging and server software setup, \textbf{LAN/WAN} checks, and basic scripting from work instructions.
+\end{onecolentry}
+
+
+\section{Technical Skills}
+
+\textbf{Hardware \& Operating Systems:}
+Windows, macOS, Linux, Ubuntu, RHEL, CentOS, Arch, Raspberry Pi, desktops, laptops, mobile devices, servers, peripherals, HP, IBM, Toshiba, Compaq
+
+\vspace{0.16em}
+
+\textbf{Imaging \& Deployment:}
+Ghost, MDT, SCCM, work instructions, software customization, vendor diagnostics
+
+\vspace{0.16em}
+
+\textbf{Support \& Applications:}
+Desktop support, break/fix, customer support, Jira, SSH, Outlook, Teams, remote access, patching
+
+\vspace{0.16em}
+
+\textbf{Warehouse \& Quality:}
+Receiving, staging, asset tagging, kitting, inventory, shipping, quality control inspections
+
+\vspace{0.16em}
+
+\textbf{Networking \& Automation:}
+LAN/WAN, basic scripting, ticket updates, vendor websites, driver and firmware updates
+
+
+
+\vspace{0.12 cm}
+
+\section{Experience}
+
+\resumeheading{\textbf{IT Support Engineer}, Hybrid, \textbf{Labs196}, TX}{Feb 2025 to Present}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Owned the \textbf{break/fix} queue in \textbf{Jira}, triaged incoming device tickets by impact, and carried each one from first response through troubleshooting to close, with the resolution written in the ticket before it left the queue and the user was told.
+	\item Worked with the user who opened the ticket, reproduced the failure on their \textbf{Windows} or \textbf{Mac}, and stayed on the session until the machine was usable again and the same issue did not return on the next login once the \textbf{patch} was applied.
+	\item Used \textbf{SSH} and remote access to take the user's machine, fixed OS, application, and login failures on the live \textbf{Windows} or \textbf{Mac}, and handed it back only after they could sign in and finish the task that had failed earlier that day.
+	\item Kept \textbf{Windows} and \textbf{macOS} desktops and laptops current with \textbf{drivers}, OS \textbf{patches}, and application upgrades, then retested the machine and closed the ticket once the user confirmed the app opened for them and sign-in still worked.
+	\item Replaced failed peripherals and drives, installed requested software, and recorded the parts and changes in \textbf{Jira} so the next engineer could see what was done on that \textbf{Windows} or \textbf{Mac} during the support visit and which part was swapped.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.16 cm}
+\resumeheading{\textbf{IT Services Technician}, On-Site, \textbf{CDW}, GA}{Jan 2024 to Jan 2025}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Imaged \textbf{Windows} systems with \textbf{Ghost} and \textbf{MDT} and installed the customer's software, including messaging clients, from work instructions, then checked the image, drivers, and login before the unit moved on to quality control.
+	\item Diagnosed hardware faults on \textbf{HP}, \textbf{IBM}, \textbf{Toshiba}, and \textbf{Compaq} systems and used vendor sites for driver and firmware updates, then applied the matching package and retested the device on the bench before it shipped.
+	\item Ran \textbf{quality control} on completed configuration builds and sent failed units back for rework before the order was released.
+	\item Pulled stock for the customer order, built the system, asset-tagged it, and staged the finished unit for shipment.
+	\item Gave break/fix support on \textbf{Windows} PCs and basic server software during configuration, confirmed \textbf{LAN} connectivity, and logged the repair and parts on the order before it shipped.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.14 cm}
+
+\section{Projects}
+
+\resumeheading{\textbf{Self-Hosted Private Cloud}}{Personal Project}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Designed a private cloud on a custom server rack and replaced paid streaming and cloud storage with self-hosted \textbf{Jellyfin}, \textbf{Immich}, and \textbf{Nextcloud} for media, photos, and files on the home network.
+	\item Wrote Infrastructure-as-Script pipelines (\textbf{deploy.sh} and per-service scripts) for \textbf{Docker Compose}, \textbf{PM2}, \textbf{nginx}, and \textbf{Certbot} so one command deploys the stack with \textbf{HTTPS}, on ports \textbf{9000} to \textbf{9999}, and again at boot with \textbf{systemd}.
+	\item Run the host on \textbf{Arch Linux} with an \textbf{Intel Core i7-14700HX}, \textbf{32 GB} RAM, an \textbf{NVIDIA RTX 4070}, and a \textbf{1 TB} NVMe, and keep Jellyfin, Immich, and Nextcloud data on a \textbf{2 TB} disk.
+	\item Built tiered storage on that data disk with \textbf{rsync} migration, and mirrored about \textbf{735 GB} to a backup drive every day at 4 AM with a \textbf{systemd} timer so a disk failure would not take the library.
+	\item Built a \textbf{FastAPI} dashboard on \textbf{PM2} for \textbf{10+} projects, with process, \textbf{Docker}, port, and \textbf{HTTPS} checks plus one-click restart, proxied \textbf{TinyPilot} and \textbf{OctoPi} through \textbf{nginx}, and run a \textbf{kind} lab for Deployments, Services, Secrets, and Ingress.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.14 cm}
+
+\section{Education}
+
+\resumeheading{\textbf{State University of New York at Binghamton}}{Aug 2022 to Dec 2023}
+
+\begin{onecolentry}
+	Master of Science in Computer Science \hfill 3.4/4.00 GPA
+\end{onecolentry}
+
+\vspace{0.16 cm}
+
+\resumeheading{\textbf{Universal College of Engineering, Mumbai}}{2017 to Aug 2021}
+
+\begin{onecolentry}
+	Bachelor of Engineering in Computer Engineering \hfill CGPA 8.09/10
+\end{onecolentry}
+
+
+\end{document}
