@@ -1,0 +1,385 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=1 cm, % seperation between body and page edge from the top
+    bottom=1 cm, % seperation between body and page edge from the bottom
+    left=1 cm, % seperation between body and page edge from the left
+    right=1 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{graphicx}
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Utsav Chaudhary's CV},
+    pdfauthor={Utsav Chaudhary},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.22 cm
+}{
+    % bottom space:
+    0.14 cm
+} % section title spacing
+
+\renewcommand\labelitemi{\textbullet} % ATS-friendly bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.04 cm,
+        parsep=0.04 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\resumeheading}[2]{%
+    \begin{onecolentry}
+        #1 \hfill #2
+    \end{onecolentry}
+} % ATS-friendly single-line role and date header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in July 2026}\hspace{\widthof{Last updated in July 2026}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+\newcommand{\AND}{\unskip
+	\cleaders\copy\ANDbox\hskip\wd\ANDbox
+	\ignorespaces
+}
+\newsavebox\ANDbox
+\sbox\ANDbox{|}
+
+\begin{header}
+	\fontsize{25 pt}{25 pt}\selectfont \textbf{UTSAV CHAUDHARY}
+
+
+	\vspace{2 pt}
+
+	\normalsize
+	\mbox{Texas}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{mailto:utsavmaan28@gmail.com}{utsavmaan28@gmail.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{tel:+1-607-296-9583}{(607) 296-9583}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://thatinsaneguy28.netlify.app/}{thatinsaneguy.com}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://www.linkedin.com/in/utsavmaan28}{in/utsavmaan28}}%
+	\kern 5.0 pt%
+	\AND%
+	\kern 5.0 pt%
+	\mbox{\hrefWithoutArrow{https://github.com/UttU28/}{github/UttU28}}%
+\end{header}
+
+\vspace{5 pt + 0.3 cm}
+
+
+\begin{onecolentry}
+	Senior \textbf{Data Engineer} with \textbf{7+ years} building, deploying, and supporting \textbf{batch and near real-time data pipelines} and data platforms in \textbf{regulated utility}, \textbf{energy}, and \textbf{enterprise consulting} environments, supporting \textbf{enterprise analytics}, \textbf{reporting}, and \textbf{AI/ML} initiatives.
+	Strong in \textbf{Python}, \textbf{PySpark}, and expert-level \textbf{SQL} with \textbf{ETL/ELT} frameworks, hands-on with \textbf{Snowflake} (\textbf{Snowpipe}, \textbf{Streams}, \textbf{Tasks}, \textbf{Snowpark}), \textbf{change data capture}, \textbf{data quality} and reconciliation frameworks, \textbf{dimensional modeling}, and \textbf{performance and cost optimization} across \textbf{AWS} and \textbf{Azure}, delivered through \textbf{Agile} teams with \textbf{CI/CD} and \textbf{data governance}.
+\end{onecolentry}
+
+
+\section{Technical Skills}
+
+\textbf{Languages \& Programming:}
+Python, SQL, PySpark, TypeScript, JavaScript, Bash
+
+\vspace{0.12em}
+
+\textbf{Data Engineering:}
+ETL/ELT frameworks, Snowflake (Snowpipe, Streams, Tasks, Dynamic Tables, Snowpark), change data capture, incremental processing, dimensional modeling, data warehousing, data quality and reconciliation, data governance, data preparation and feature engineering
+
+\vspace{0.12em}
+
+\textbf{Pipelines, Streaming \& APIs:}
+Batch and streaming patterns, Apache Kafka, WebSockets, Python FastAPI, Flask, Pydantic, Pandas, REST APIs, scheduled orchestration
+
+\vspace{0.12em}
+
+\textbf{Databases \& Storage:}
+Snowflake, PostgreSQL, MongoDB, Redis, Azure SQL, SQL Server, AWS S3, Azure Blob Storage
+
+\vspace{0.12em}
+
+\textbf{Cloud, DevOps \& CI/CD:}
+AWS (EC2, EKS, Lambda, RDS, S3, VPC, IAM, API Gateway, CloudWatch), Azure (AKS, App Services, Azure SQL, Key Vault, Azure DevOps), Docker, Kubernetes, Terraform, GitHub Actions, Jenkins, Git, environment promotion, automated testing, Agile
+
+\vspace{0.12em}
+
+\textbf{Security \& Compliance:}
+RBAC, SSL/TLS, OAuth 2.0, NERC CIP, ISO 27001, PCI, OWASP, secure coding, vulnerability assessments, privacy and regulatory requirements
+
+\vspace{0.12em}
+
+\textbf{AI/ML Support:}
+Azure OpenAI, Llama, Hugging Face, RAG, embeddings, feature engineering for ML workloads, TensorFlow
+
+
+
+\section{Experience}
+
+\resumeheading{\textbf{Sr. Data Engineer / Technical Lead}, Hybrid, \textbf{MidAmerican Energy} (Contract: Midh), TX}{Feb 2025 to Present}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Led parallel \textbf{data platform} and product workstreams for a regulated electric and natural gas utility, turning business requirements into technical specifications for \textbf{data pipelines} across grid telemetry and smart meter (AMI) sources.
+	\item Built \textbf{batch and near real-time ingestion} from ERP, customer information system (CIS), and market data feeds into \textbf{Snowflake}, with \textbf{Snowpipe} for continuous micro-batch loads and \textbf{Tasks} for scheduled transformations.
+	\item Implemented \textbf{change data capture} and incremental processing with \textbf{Streams}, watermark columns, and merge logic, replacing full reloads, cutting pipeline run time by 60\%; used \textbf{Snowpark} to move Python transformation logic close to data.
+	\item Designed the \textbf{data quality} and \textbf{reconciliation} framework: row count and checksum validations, schema drift checks, and freshness monitoring so only curated, verified records served analytics and \textbf{AI/ML} workloads.
+	\item Modeled \textbf{dimensional star schemas} for outage management and AMI metering marts; tuned queries, clustering keys, and warehouse sizing for \textbf{performance and cost efficiency}.
+	\item Led \textbf{code reviews}, design reviews, and architecture reviews keeping pipelines consistent on \textbf{Python}, \textbf{SQL}, automated testing, coding standards, and \textbf{data governance} aligned to \textbf{NERC CIP} compliance reviews.
+	\item Streamed \textbf{Kafka} telemetry into Python transformation services on EKS/AKS, and delivered through \textbf{Agile} teams with \textbf{CI/CD} (\textbf{GitHub Actions}, Bitbucket) across globally distributed stakeholders.
+\end{highlights}
+\end{onecolentry}
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Data Engineer}, On-Site, \textbf{Chevron}, GA}{Jan 2024 to Jan 2025}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built and reviewed \textbf{Python ETL} for \textbf{drilling reporting} and refinery maintenance data landing in \textbf{Azure SQL}, with \textbf{automated testing} before \textbf{AKS} promotion, helping keep 99.9\% pipeline availability behind Application Gateway.
+	\item Delivered \textbf{near real-time telemetry ingestion} (Kafka, WebSockets) into Python transformation services and \textbf{React.js} operational views, keeping schemas and contracts intact through environment promotion on Azure.
+	\item Wrote and tuned \textbf{expert SQL} over large \textbf{seismic and operational datasets}, applying dimensional models to reporting marts and lifting query performance by 40\%.
+	\item Added \textbf{data quality checks} and \textbf{reconciliation} between source systems and marts, with \textbf{Azure Key Vault} encryption and RBAC on proprietary data, cutting downstream data incidents by 75\%.
+	\item Supported \textbf{environment promotion} through \textbf{Azure DevOps} pipelines, Terraform, and Git workflows, containerizing \textbf{FastAPI} data services with \textbf{automated testing} and \textbf{OWASP}-aligned secure coding.
+	\item Built \textbf{pipeline observability} with Application Insights, Azure Monitor, and Grafana, supporting MTTD from 30 minutes to 5 minutes; led root cause analysis and \textbf{vulnerability assessments} with Risk and Compliance.
+\end{highlights}
+\end{onecolentry}
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Data Engineer CO-OP}, On-Site, \textbf{Midh Technologies}, TX}{June 2023 to Dec 2023}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built \textbf{Python ETL} and \textbf{Pandas} jobs that profiled, cleaned, and loaded curated tables into \textbf{PostgreSQL} and \textbf{MongoDB} for dashboards, APIs, and \textbf{feature engineering} for \textbf{Llama} and Hugging Face model fine-tuning.
+	\item Cut manual data preparation time by 50\% with reusable Python transformation modules, with \textbf{Pydantic} schemas, retries, and validation gating bad records before load.
+	\item Served curated data through \textbf{Python FastAPI} and \textbf{Flask REST APIs} behind AWS API Gateway / Azure API Management, with IAM authentication, request throttling, and \textbf{PostgreSQL} query tuning.
+	\item Developed \textbf{React.js} analytics dashboards with TypeScript and D3.js over warehouse tables with granular \textbf{RBAC}, translating analyst requirements into production reporting workflows.
+	\item Built production \textbf{CI/CD} for pipeline code with GitHub Actions and Azure DevOps: \textbf{pytest} unit tests, Docker image builds, security scanning, Terraform, and environment promotion.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Data Engineer}, On-Site, \textbf{Accenture}, India}{June 2021 to July 2022}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built \textbf{ELT pipelines} in Python and \textbf{Pandas} for enterprise client accounts in a global consulting engagement, loading curated data into \textbf{PostgreSQL} behind interactive D3.js and Chart.js reporting that improved data visualization efficiency by 45\%.
+	\item Optimized \textbf{SQL} queries and \textbf{Python FastAPI} data endpoints with Pydantic models, sustaining 250ms average response time behind Nginx with SSL/TLS termination on hybrid on premise deployments.
+	\item Built \textbf{Python} scraping/ETL with Selenium, BeautifulSoup, and Pandas across diverse source systems, cutting manual collection time by 60\%; added WebSocket streaming so operational dashboards stayed current.
+	\item Implemented self hosted \textbf{CI/CD} with GitHub Actions and Jenkins for pipeline and API code, plus Prometheus/Grafana monitoring; applied code reviews and \textbf{ISO 27001}-aligned data handling, reducing operational overhead by 60\%.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Software Engineer, Data Pipelines}, Remote, \textbf{VRoKCs}, MO}{March 2020 to May 2021}
+\begin{onecolentry}
+\begin{highlights}
+	\item Built \textbf{Python} data pipelines for \textbf{data collection, annotation, and dataset preparation} feeding \textbf{TensorFlow Lite} sign language models, with image upload and webcam frames landing in \textbf{Azure Blob Storage}.
+	\item Deployed \textbf{Flask} ingestion and prediction APIs on \textbf{Azure App Services} with auto scaling and integrated monitoring, and batch preprocessing through \textbf{Azure DevOps} \textbf{CI/CD}, reducing deployment cycles by 40\%.
+	\item Applied \textbf{automated testing} and secure coding on critical path data endpoints; partnered with ML engineers on Python preprocessing and \textbf{Docker} for inference services.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Software Developer, Data \& Backend}, On-Site, \textbf{Wonderbiz.in}, India}{March 2019 to Feb 2020}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built \textbf{Industrial IoT sensor data ingestion} in \textbf{Python Flask} and \textbf{Node.js}, landing high-frequency \textbf{sensor data} and \textbf{asset tracking} records into \textbf{SQL Server} for the \textbf{Angular} analytics dashboard.
+	\item Automated \textbf{SQL Server} backups, \textbf{sensor data} cleanup, and reporting with Python scripts, and used Git versioning with Jenkins builds for \textbf{environment promotion} across Dev, Test, and Production.
+	\item Performed code reviews, unit and integration \textbf{automated testing}, and secure coding checks (input validation, auth, logging) before Industry 4.0 releases to customer environments.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.15 cm}
+\resumeheading{\textbf{Backend Developer}, On-Site, \textbf{underDogs Gaming Studios}, India}{Jan 2018 to Feb 2019}
+
+\begin{onecolentry}
+\begin{highlights}
+	\item Built game service \textbf{REST APIs} in \textbf{Python} and \textbf{Node.js} over \textbf{SQL} stores, integrating the Quarters API for wallets, currency conversion, and secure transactions across multiple titles.
+	\item Wrote \textbf{Python} tooling and JavaScript admin screens for payments, inventory, and shipping, keeping transactional data reliable when requests failed or the network dropped.
+	\item Applied API security, logging, and integration \textbf{automated testing}, and stood up release and hosting for game backends with Git source control and health checks.
+\end{highlights}
+\end{onecolentry}
+
+
+
+
+\vspace{0.2 cm}
+
+\section{Education}
+
+\resumeheading{\textbf{State University of New York at Binghamton}}{Aug 2022 to Dec 2023}
+
+\begin{onecolentry}
+	Master of Science in Computer Science \hfill 3.4/4.00 GPA
+\end{onecolentry}
+
+
+\vspace{0.2 cm}
+
+\section{Certifications}
+
+\begin{onecolentry}
+	\includegraphics[height=2cm]{../zimages/az400.png}
+	\includegraphics[height=2cm]{../zimages/az900.png}
+	\includegraphics[height=2cm]{../zimages/expert.png}
+	\includegraphics[height=2cm]{../zimages/googleit.png}
+
+	\textbf{Microsoft Certified: DevOps Engineer Expert} \hfill \href{https://drive.google.com/file/d/1AjPcmWMrnxSNEUaSC6XzCVqHik7d5M1M/view?usp=drive_link}{View Credential}
+
+	AZ-400: Designing and Implementing Microsoft DevOps Solutions
+
+	AZ-900: Microsoft Certified: Azure Fundamentals
+
+	\textbf{Google IT Automation with Python} (Specialization) \hfill \href{https://www.coursera.org/account/accomplishments/specialization/certificate/59YMRC67LBUQ}{View Credential}
+\end{onecolentry}
+
+
+
+\end{document}
