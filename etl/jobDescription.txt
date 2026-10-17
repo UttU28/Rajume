@@ -1,0 +1,33 @@
+It is with ExxonMobil and the manager is a vey successful manager and very strong in technical skills
+
+
+Key Responsibilities:
+
+Design, develop, and maintain scalable, high-performance data pipelines and data platforms in a cloud environment.
+Build and optimize batch and near real-time data ingestion and transformation frameworks from diverse source systems.
+Collaborate with Product Managers, Business Stakeholders, and Solution Architects to translate business requirements into technical solutions.
+Design and implement robust data processing frameworks that support enterprise analytics, reporting, and AI/ML initiatives
+Develop efficient ETL/ELT solutions leveraging Snowflake, Python, and SQL.
+Design and implement data quality, reconciliation, validation, and monitoring frameworks to ensure data accuracy and reliability.
+Optimize data models, queries, and processing workflows for performance, scalability, and cost efficiency.
+Ensure compliance with enterprise data governance, security, privacy, and regulatory requirements.
+Support data preparation and feature engineering requirements for advanced analytics and machine learning workloads.
+Troubleshoot complex data integration and performance issues and implement appropriate solutions.
+Contribute to architecture reviews, design discussions, and continuous improvement initiatives across the data platform.
+Work effectively within Agile delivery teams and collaborate with globally distributed stakeholders.
+
+Technical Skills and Experience Requirements
+
+7+ years of hands-on experience designing, developing, deploying, and supporting enterprise-scale data engineering solutions.
+Strong experience building and maintaining scalable, resilient, and distributed data pipelines in cloud environments.
+Extensive hands-on experience with Snowflake, including data loading, transformations, performance tuning, security, and workload optimization.
+Strong programming experience in Python, PySpark or both for building scalable data pipelines, data transformation frameworks, and automation solutions.
+Experience with Snowflake features such as Streams, Tasks, Snowpipe, Dynamic Tables, Snowpark, and performance optimization techniques.
+Expert-level proficiency in SQL, including query optimization, performance tuning, and large-scale data processing.
+Experience implementing ETL/ELT frameworks and data integration solutions across multiple source systems.
+Experience implementing Change Data Capture (CDC) and incremental data processing frameworks.
+Experience designing and implementing data quality and observability frameworks.
+Strong understanding of data warehousing concepts, dimensional modeling, and modern data architecture principles.
+Experience with batch and streaming data processing patterns and architectures.
+Familiarity with CI/CD practices, code version control, and automated deployment processes.
+Experience working in Agile development environments.

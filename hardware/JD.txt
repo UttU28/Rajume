@@ -1,0 +1,87 @@
+Associate Engineer – Implementation (Early Career)
+Location: Atlanta, GA (Hybrid – 2–3 days per week in office)
+Travel: Approximately 70%+ local travel to customer sites
+About GreyOrange
+GreyOrange is transforming the future of warehouse automation through Physical AI, intelligent
+software, and autonomous mobile robots (AMRs). Our GreyMatter™ platform powers some of
+the world's most advanced fulfillment operations by integrating AI, robotics, and enterprise
+warehouse systems.
+We're looking for recent Computer Science, Computer Engineering, Information Systems,
+Software Engineering, or related graduates who are eager to launch their careers in software
+implementation, customer delivery, and warehouse automation.
+If you enjoy solving technical problems, working directly with customers, and seeing your
+software make an immediate impact in the real world, we'd love to meet you.
+Position Summary
+As an Associate Engineer – Implementation, you'll work alongside experienced
+implementation engineers to deploy, test, and support GreyOrange's AI-powered warehouse
+automation solutions.
+This role combines software engineering, systems integration, customer interaction, and
+problem-solving. You'll help ensure our software integrates seamlessly with Warehouse
+Management Systems (WMS), robotic fleets, and customer operations.
+This is an excellent opportunity for a recent graduate interested in cloud technologies, robotics,
+automation, supply chain technology, and enterprise software.
+
+What You'll Do
+Support software implementation projects at customer distribution centers
+Assist with System Integration Testing (SIT) and User Acceptance Testing (UAT)
+Execute test cases and validate system functionality
+Analyze logs and troubleshoot technical issues using Unix/Linux tools
+Write SQL queries to validate data and investigate issues
+Execute and modify Python scripts used for testing and automation
+Support customer go-live activities and post-production hypercare
+Document issues, resolutions, and implementation procedures
+Collaborate with Software Engineering, QA, Product, and Customer Success teams
+Learn warehouse operations, robotics workflows, and WMS integrations
+
+Required Qualifications
+Bachelor's degree in Computer Science, Computer Engineering, Information Systems,
+Software Engineering, or a related technical field
+0–2 years of professional experience (new graduates encouraged to apply)
+
+Strong foundation in:
+Unix/Linux: Log analysis, command-line debugging, system checks
+Python: Executing and debugging scripts used for testing or automation
+SQL: Writing queries for data validation and issue investigation
+APIs: Testing endpoints, troubleshooting integrations, and validating
+request/response data
+Understanding of software development fundamentals
+Excellent analytical and troubleshooting skills
+Strong written and verbal communication skills
+Ability to travel approximately 70%+ locally to customer locations
+Ability to work in our Atlanta office 2–3 days per week
+Preferred Qualifications
+
+Experience through internships, coursework, research, or personal projects involving:
+Software testing or QA
+REST APIs
+Git/GitHub
+
+Cloud platforms (GCP, AWS, or Azure)
+Object-oriented programming
+Agile development
+Data analysis
+Linux administration
+Bonus: Exposure to Supply Chain, Warehouse Management Systems (WMS), Manufacturing,
+Robotics, or Logistics technologies.
+What Makes You Successful
+
+We're looking for candidates who are:
+Curious and eager to learn
+Strong technical problem solvers
+Comfortable working directly with customers
+Collaborative team players
+Adaptable in fast-paced implementation environments
+Passionate about technology and automation
+
+Why Join GreyOrange?
+Launch your career in AI-powered warehouse automation
+Receive mentorship from experienced implementation engineers
+Gain hands-on experience with enterprise software, robotics, and cloud technologies
+Work directly with Fortune 500 customers
+Competitive compensation with bonus opportunity
+Comprehensive medical, dental, vision, 401(k), paid time off, and professional
+development benefits
+Clear career progression into Engineer, Senior Engineer, and Technical Lead roles
+Career Path
+Associate Engineer – Implementation → Engineer – Implementation → Senior Engineer –
+Implementation → Lead Engineer / Technical Manager
